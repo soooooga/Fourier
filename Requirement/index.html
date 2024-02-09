@@ -1,0 +1,727 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Java,Python,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="プロジェクト演習のホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+<style type="text/css">
+<!--
+body {
+  background-color : #ffffff;
+  margin : 20px;
+  padding : 10px;
+  font-family : serif;
+  font-size : 10pt;
+}
+a {
+  text-decoration : underline;
+  color : #000000;
+}
+a:link {
+  background-color : #ffddbb;
+}
+a:visited {
+  background-color : #ccffcc;
+}
+a:hover {
+  background-color : #dddddd;
+}
+a:active {
+  background-color : #dddddd;
+}
+div.belt {
+  background-color : #eeeeee;
+  padding : 0px 4px;
+}
+div.belt-yellow {
+  background-color : #ffffcc;
+  padding : 0px 4px;
+}
+div.belt-blue {
+  background-color : #ddeeff;
+  padding : 0px 4px;
+}
+div.right-small {
+  text-align : right;
+  font-size : 8pt;
+}
+img.border {
+  border-width : 1px;
+  border-color : #000000;
+  vertical-align : middle;
+}
+img.borderless {
+  border-width : 0px;
+  vertical-align : middle;
+}
+img.expression {
+  border-width : 0px;
+  vertical-align : middle;
+  padding : 4px 2px;
+}
+p.belt {
+  background-color : #ffeedd;
+  padding : 4px 8px;
+}
+p.belt-blue {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt-yellow {
+  background-color : #ffffcc;
+  padding : 4px 8px;
+}
+table {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+}
+table.profile {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+  margin-top : 8px;
+  margin-left : 8px;
+  margin-right : 8px;
+  margin-bottom : 8px;
+}
+table.belt {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  background-color : #ffeedd;
+  padding : 0px 0px;
+  width : 100%;
+}
+table.content {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+}
+table.font-fixed {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+  font-family : monospace;
+}
+table.nest {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 0px 0px;
+}
+td {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+td.center {
+  text-align : center;
+}
+td.center-half {
+  text-align : center;
+  width : 50%;
+  font-size : 8pt;
+}
+td.center-small {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.center-small-nopadding {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 0px;
+}
+td.center-white {
+  text-align : center;
+  background-color : #ffffff;
+}
+td.center-small-white {
+  text-align : center;
+  font-size : 8pt;
+  background-color : #ffffff;
+}
+td.center-border1 {
+  text-align : center;
+  vertical-align : middle;
+  empty-cells : show;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #ffc080;
+  width : 22px;
+  height : 22px;
+}
+td.left-small {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.left-small-white {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+td.right-small {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.right-small-white {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+th {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+#menu {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 32px;
+}
+#menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
+  clear: both;
+}
+#menu li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  float: left;
+}
+#menu a {
+  display: block;
+  padding: 2px 4px;
+  text-decoration: none;
+  margin: 0px;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #666666;
+}
+#menu a:hover {
+  display: block;
+  padding: 2px 4px;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  background: #FFCC66;
+}
+#menu .current {
+  background-color: #F45F57;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+}
+-->
+</style>
+<title>プロジェクト演習「フーリエ信号処理」要求仕様書</title>
+</head>
+<body>
+<div id="menu">
+<ul>
+  <li><a href="../index.html">ホーム</a></li>
+  <li><a href="index.html" class="current">要求仕様書</a></li>
+  <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+  <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+  <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+  <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+  <li><a href="../TestResult/index.html">テスト結果</a></li>
+  <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+  <li><a href="../Program/index.html">プログラム</a></li>
+  <li><a href="../Manual/index.html">マニュアル</a></li>
+</ul>
+</div>
+<hr>
+<h2>プロジェクト演習「フーリエ信号処理」要求仕様書</h2>
+<ul>
+  <li><a href="#KaihatsuNoMokuteki">開発の目的</a></li>
+  <li><a href="#KihonHoushin">基本方針</a>
+  <ul>
+    <li><a href="#SekkeiHoushin">設計方針</a></li>
+    <li><a href="#KanriHoushin">管理方針</a></li>
+    <li><a href="#JissouHoushin">実装方針</a></li>
+    <li><a href="#TetHoushin">テスト方針</a></li>
+    <li><a href="#ReleaseHoushin">リリース方針</a></li>
+  </ul></li>
+  <li><a href="#KihonYouken">基本要件</a>
+  <ul>
+    <li><a href="#ApplicationNoYouto">アプリケーションの用途</a></li>
+    <li><a href="#TashoutonaruUser">対象となるユーザ</a></li>
+    <li><a href="#HardwareKousei">ハードウェア構成</a></li>
+    <li><a href="#SoftwareKousei">ソフトウェア構成</a></li>
+    <li><a href="#MokuhyouToSeinou">目標と性能</a></li>
+    <li><a href="#SeigenJikou">制限事項</a></li>
+  </ul></li>
+  <li><a href="#KaihatsuTaisei">開発体制</a></li>
+  <li><a href="#KaihatsuSchedule">開発スケジュール</a></li>
+</ul>
+<div class="belt">
+<h3><a name="KaihatsuNoMokuteki">開発の目的</a></h3>
+</div>
+<p>フーリエ変換（fourier transformation）を作成し、それを使った信号処理アプリケーション（応用プログラム）を開発する。MATLABやMathematicaなどを援用してはならない。必ず所定のプログラミング言語を用いて自分たちの手で作り出し、それをベースにしてアプリケーションに仕立て上げること。</p>
+<p>この開発の目的は、実際にフーリエ変換を一から作り始めて、オブジェクト指向プログラムとしてライブラリ化し、それを応用するまでの一連の作業（工程）を演習することにより、信号処理とは何かを会得すると共に、かかる開発要員が品質の高いソフトウェアを念頭に置き、デザインとプログラミングのスキルを向上させ、ソフトウェア工学的なセンスを磨くことにある。</p>
+
+<p>フーリエ変換の詳細は各プロジェクト（各員）で調査してもらうが、ここで簡単な概略を記す。実社会には様々な信号（波）がある。株価変動、心電図、音波、オシロスコープなど、いたるところで波のように上下にうねる信号を目にするに違いない。</p>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="right-small">株価変動</td>
+            <td class="center-small"><a href="images/StockPrice.jpg"><img class="borderless" src="thumbnails/StockPrice.jpg" width="200" height="63" alt="StockPrice"></a></td>
+          </tr>
+          <tr>
+            <td class="right-small">心電図</td>
+            <td class="center-small"><a href="images/Electrocardiogram.jpg"><img class="borderless" src="thumbnails/Electrocardiogram.jpg" width="200" height="63" alt="Electrocardiogram"></a></td>
+          </tr>
+          <tr>
+            <td class="right-small">音波</td>
+            <td class="center-small"><a href="images/SoundWave.jpg"><img class="borderless" src="thumbnails/SoundWave.jpg" width="200" height="63" alt="SoundWave"></a></td>
+          </tr>
+          <tr>
+            <td class="right-small">オシロスコープ</td>
+            <td class="center-small"><a href="images/SampleSignals.jpg"><img class="borderless" src="thumbnails/SampleSignals.jpg" width="200" height="63" alt="SampleSignals"></a></td>
+          </tr>
+          <tr>
+            <td class="right-small">時間</td>
+            <td class="left-small">→ t</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>株価は時が経つに連れて上がったり下がったりする。心電図のようにドックンドックンと周期的に繰り返すものもある。音波は様々な振動数を持つ波が合わさっている。電流や電圧の時間的な変化を波形として観察できるオシロスコープもある。したがって、縦軸は、価格であったり、電位であったり、音の強さであったり、電流であったり、多種多様となるが、横軸はどれも決まって時間であり、上記のいずれの図も情報の流れ（すなわち、信号）を表している。</p>
+<p>この手の情報の流れを調査する際の定石は、まず周波数成分に分けて（周波数分析をして）みることである。周波数（frequency）とは1秒間に振動する（繰り返す波の）回数であり、Hz（ヘルツ）という単位をつけて表す。たとえば、次のような1,000個の数値を線でつないだ元データ（1秒間に1,000回のサンプリングを行った離散的なデータ）があったとする。</p>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="center-small"><a href="images/Fourier00.jpg"><img class="borderless" src="thumbnails/Fourier00.jpg" width="338" height="99" alt="Fourier00"></a></td>
+          </tr>
+          <tr>
+            <td class="center-small">元データ（1,000個の数値）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>これにフーリエ変換（正確には高速な離散フーリエ変換）を施してみると、実部に2つのピーク、虚部にも2つのピークが現れる。これは余弦波（cos波）と正弦波（sin波）が2つずつ、計4つあるということである。</p>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="center-small"><a href="images/Fourier01.jpg"><img class="borderless" src="thumbnails/Fourier01.jpg" width="168" height="99" alt="Fourier01"></a></td>
+            <td class="center-small"><a href="images/Fourier02.jpg"><img class="borderless" src="thumbnails/Fourier02.jpg" width="168" height="99" alt="Fourier02"></a></td>
+          </tr>
+          <tr>
+            <td class="center-small">実部（余弦波の周波数が出る）</td>
+            <td class="center-small">虚部（正弦波の周波数が出る）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>横軸の目盛を数えるとわかるが、12Hzと24Hzの余弦波、5Hzと10Hzの正弦波、これらが成分であることを表す。縦軸は振幅（波の強さ）に関係しており、12Hzの余弦波の振幅は6、24Hzの余弦波の振幅は3、そして、5Hzの正弦波の振幅は4、10Hzの正弦波の振幅は2となっている。これら4つを別々に描き出し、それぞれに対してフーリエ変換を施した結果を並べてみる。</p>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="center-small"><a href="images/Fourier60.jpg"><img class="borderless" src="thumbnails/Fourier60.jpg" width="338" height="99" alt="Fourier60"></a></td>
+            <td class="center-small"><a href="images/Fourier61.jpg"><img class="borderless" src="thumbnails/Fourier61.jpg" width="168" height="99" alt="Fourier61"></a></td>
+            <td class="center-small"><a href="images/Fourier62.jpg"><img class="borderless" src="thumbnails/Fourier62.jpg" width="168" height="99" alt="Fourier62"></a></td>
+          </tr>
+          <tr>
+            <td class="center-small">振幅6の12Hzの余弦波</td>
+            <td class="center-small">実部（余弦波の周波数が出る）</td>
+            <td class="center-small">虚部（正弦波の周波数が出る）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="center-small"><a href="images/Fourier80.jpg"><img class="borderless" src="thumbnails/Fourier80.jpg" width="338" height="99" alt="Fourier80"></a></td>
+            <td class="center-small"><a href="images/Fourier81.jpg"><img class="borderless" src="thumbnails/Fourier81.jpg" width="168" height="99" alt="Fourier81"></a></td>
+            <td class="center-small"><a href="images/Fourier82.jpg"><img class="borderless" src="thumbnails/Fourier82.jpg" width="168" height="99" alt="Fourier82"></a></td>
+          </tr>
+          <tr>
+            <td class="center-small">振幅3の24Hzの余弦波</td>
+            <td class="center-small">実部（余弦波の周波数が出る）</td>
+            <td class="center-small">虚部（正弦波の周波数が出る）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="center-small"><a href="images/Fourier70.jpg"><img class="borderless" src="thumbnails/Fourier70.jpg" width="338" height="99" alt="Fourier70"></a></td>
+            <td class="center-small"><a href="images/Fourier71.jpg"><img class="borderless" src="thumbnails/Fourier71.jpg" width="168" height="99" alt="Fourier71"></a></td>
+            <td class="center-small"><a href="images/Fourier72.jpg"><img class="borderless" src="thumbnails/Fourier72.jpg" width="168" height="99" alt="Fourier72"></a></td>
+          </tr>
+          <tr>
+            <td class="center-small">振幅4の5Hzの正弦波</td>
+            <td class="center-small">実部（余弦波の周波数が出る）</td>
+            <td class="center-small">虚部（正弦波の周波数が出る）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="center-small"><a href="images/Fourier90.jpg"><img class="borderless" src="thumbnails/Fourier90.jpg" width="338" height="99" alt="Fourier90"></a></td>
+            <td class="center-small"><a href="images/Fourier91.jpg"><img class="borderless" src="thumbnails/Fourier91.jpg" width="168" height="99" alt="Fourier91"></a></td>
+            <td class="center-small"><a href="images/Fourier92.jpg"><img class="borderless" src="thumbnails/Fourier92.jpg" width="168" height="99" alt="Fourier92"></a></td>
+          </tr>
+          <tr>
+            <td class="center-small">振幅2の10Hzの正弦波</td>
+            <td class="center-small">実部（余弦波の周波数が出る）</td>
+            <td class="center-small">虚部（正弦波の周波数が出る）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>つまり、先ほどの1,000個の元データは上記の4つの波の重ね合わせた波（合成波）だった。それぞれを合計（合成）すると、元データになることを次の図で確認してほしい。それこそがフーリエ変換と逆フーリエ変換を相互に行き来していることに他ならない。</p>
+<table class="belt" summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table class="content" summary="table">
+        <tbody>
+          <tr>
+            <td class="center-small"><a href="images/Fourier03.jpg"><img class="borderless" src="thumbnails/Fourier04.jpg" width="338" height="99" alt="Fourier04"></a></td>
+            <td class="center-small"><a href="images/SourceDataAll.jpg"><img class="borderless" src="thumbnails/SourceDataAll.jpg" width="360" height="114" alt="SourceDataAll"></a></td>
+          </tr>
+          <tr>
+            <td class="center-small">逆フーリエ変換して復元したデータ（1,000個の数値）</td>
+            <td class="center-small">結局、4つの波の重ね合わせ</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>これはちょうど和音の中に含まれるいくつかの単音たちを見つけ出すのに似ている。それがフーリエ変換の順変換であり、その反対が逆変換となる。このようにフーリエ変換をかいつまんでもらっても構わない。実は私たちの聴覚系（脳内）にはフーリエ変換（信号源の分離と合成）がすでに組み込まれていると言っても過言ではない。周波数成分に分解して調査するという分析（解析）法、そして、信号処理の基本（理工学する方法）を垣間見てもらえたと思う。</p>
+<p>余談になるが、フーリエ変換を編み出したジョゼフ・フーリエさん（1768年〜1830年）はフランスの数学者である。数学だけに留まらず、熱伝導なども詳細に研究し、物理化学分野の功績も大きい。ナポレオン・ボナパルトさん（1769年〜1821年）とほぼ同世代で、グルノーブルの知事やエジプトの総督も勤めていたので、行政的な手腕もあったのかもしれない。</p>
+<p>かつて「白い恋人たち」という曲があった。グルノーブル冬季オリンピック（1968年）のテーマソングである。サザンの桑田佳祐さんの歌にも同じ題名の曲があるし、北海道みやげのお菓子にも単数形の名前を持つものがある。いずれもグルノーブル（の白い恋人たち:skiers）を慕うのであろう。グルノーブル大学の数学教室はフーリエ研究所とも呼ばれている。</p>
+<p>フーリエさんの業績は、どんなに込み入った複雑な現象も簡単な現象の寄せ集め（重ね合わせ）であること、複雑な周期振動も難解な関数も単純な正規運動や簡素な関数が重畳（ちょうじょう）したものに過ぎないこと、どんな関数でも詮ずる所は正弦波と余弦波の足し算や引き算などに展開できること、それらを導き出して世に明解に示した（私たちの脳内にあったものを外在化させた）ことである。それをこの演習で追認（追体験）してみようではないか。</p>
+<p>フーリエ変換は画像処理や各種データの特性解析などに広く応用できる。ノイズ除去、シグナル強調、特徴検出、領域分割、類似検索、再帰的な周波数分離、肌理（きめ）の解析、欠損情報の復元など、様々な応用に考えを巡らすことも開発の目的である。このプロジェクト演習では、その一環として画像処理に焦点を当てる。画素（ピクセル）の二次元配列である画像を、二次元空間に広がった周期信号とみなし、空間周波数に分解して再構成するアプリケーションの開発である。</p>
+<div class="belt">
+<h3><a name="KihonHoushin">基本方針</a></h3>
+</div>
+<p>開発に関わるドキュメントおよびプログラムのすべてをHTML文書にしてWebブラウザからアクセス可能にすること。また、アプリケーションのインストールや取り扱いを説明したマニュアルもHTML文書として作成すること。すなわち、この文書からたどれる全文書（このページの最上部にリンクされた全ページ）を完成させなければならない。以下にそれぞれの基本方針を記載する。</p>
+<ul>
+  <li><a name="SekkeiHoushin">設計方針</a>
+  <p>アプリケーションの起動時に一枚のウィンドウを開き、後述する各々の機能をそのウィンドウの中に実現すること。オブジェクト指向設計を行い、UML（Unified Modeling Language）を用いて基本設計書（外部設計書）および詳細設計書（内部設計書）にまとめること。また、ウィンドウアプリケーションを構築する際の定石となっているデザインパターンのObserverパターン：MVC（Model-View-Controller）を採用しなければならない。</p></li>
+  <li><a name="KanriHoushin">管理方針</a>
+  <p>開発に伴う仕様書・設計書・報告書などの全ドキュメントおよび全ソースプログラムをリポジトリ（SCM (Software Configuration Management)：SubversionやGitなどのソフトウェア構成管理）の中に格納し、リビジョン管理（バージョン管理）を行い、開発チームで共有すること。そして、このリポジトリ自体を成果物（納品物）に含めなければならない。</p></li>
+  <li><a name="JissouHoushin">実装方針</a>
+  <p>コーディング規約を遵守すること。クラスの名称にはアッパーキャメルケース、メソッドの名称にはロワーキャメルケース、リテラルの名称にはアッパーケースやアッパーキャメルケースを用いること。また、変数やメソッドなどの名称はロワーケースやロワーキャメルケースを基本とする。すべての名称は省略せずに意味を明確に示すものを採用すること。リテラル（定数）などは１つのクラス（もしくは名前空間）にまとめ、ソースプログラムの中に散在するのを避けなければならない。</p></li>
+  <li><a name="TetHoushin">テスト方針</a>
+  <p>ユーザの操作に関わるテストケースは設計段階でテスト仕様書にまとめること。xUnit（JUnitやSUnitなど）によるテストケースを行うこと。テスト結果は報告書にまとめ、各々のリリースや大きな修正の直後に全件実施（回帰テスト）を行わなければならない。</p></li>
+  <li><a name="ReleaseHoushin">リリース方針</a>
+  <p>オープンソースであること。リポジトリからチェックアウトすることにより、全ソースプログラムを獲得できること。また、ソースプログラムから実行モジュールであるアプリケーションを構築するための手段（MakefileやAntのようなコンパイル・リンク・インストール・テスト・アーカイブ作成などを自動化する手立て）を提供すること。そして、アプリケーションは簡単なコマンドによって起動されなければならない。取り扱い説明書（マニュアル）を必ずリリースに含めなければならない。</p></li>
+</ul>
+<div class="belt">
+<h3><a name="KihonYouken">基本要件</a></h3>
+</div>
+<p>以下に開発計画書および基本設計書を作成するにあって必要なことを記載する。</p>
+<ul>
+  <li><a name="ApplicationNoYouto">アプリケーションの用途</a>
+  <p>まず、画像データを処理する用途に使える。ここで開発するフーリエ変換は信号処理の一種であるから、画像データ処理だけに留まらず、様々なデータの特性解析の用途がある。そして、フーリエ変換を一から作り上げて、オブジェクト指向でデザインし、実装ライブラリとして保持することは宝物となる。研究目的や教育目的で使われるMATLABやMathematicaなどへの過度な依存から脱却する用途も兼ね備える。（バタフライ演算による高速フーリエ変換ぐらい、自力でプログラミングできないようでは、かなりまずい。）</p></li>
+  <li><a name="TashoutonaruUser">対象となるユーザ</a>
+  <p>ノイズ除去、シグナル強調、特徴検出、領域分割、類似検索、再帰的な周波数分離、肌理（きめ）の解析、欠損情報の復元などを行おうとするユーザが対象となる。また、フーリエ変換をMATLABやMathematicaなどに頼った際のロイヤリティ料やライセンス料に悩まされているユーザも対象になるであろう。（研究成果をビジネスにしようとしたり、ベンチャー企業として立ち上げようとする際、当該のロイヤリティ料やライセンス料は製品化や廉価化の大きな障害となっている。）</p></li>
+  <li><a name="HardwareKousei">ハードウェア構成</a>
+  <p>Name: Apple Macintosh シリーズ　(MacBook / MacBook Air / MacBook Pro / Mac mini / iMac / Mac Pro など)<br>
+  Processor: Intel Core 2 Duo 2GHz クラス以上（64bit アーキテクチャの Xenon などを含む）<br>
+  Memory: 1GB 以上<br>
+  Hard Disk: 250MB 以上の空き容量</p></li>
+  <li><a name="SoftwareKousei">ソフトウェア構成</a>
+  <p>OS: OS X Yosemite (10.10) / OS X El Capitan (10.11) / macOS Sierra (10.12) 以上<br>
+  開発に用いるプログラミング言語は以下のいずれかとする。<br>
+  1) Java: JDK 1.8 以上<br>
+  2) Python: Python 2.7 以上<br>
+  3) Smalltalk: VisualWorks 7.6 以上</p></li>
+  <li><a name="MokuhyouToSeinou">目標と性能</a>
+  <p>冒頭に記した信号（sample wave）、そして、典型的な信号である矩形波（square wave）・三角波（triangle wave）・ノコギリ波（sawtooth wave）・低周波から高周波までの全域が含まれる波（chirp signal：チャープ信号）などを離散データとして作り、それらに対して離散フーリエ変換を施して、次のような結果が得られることをまず確認しなければならない。作成した離散フーリエ変換の正しさの証明が第一義である。</p>
+  <p>冒頭に記した信号：sample wave</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Fourier04.jpg"><img class="borderless" src="thumbnails/Fourier04.jpg" width="338" height="99" alt="Fourier04"></a></td>
+              <td class="center-small"><a href="images/Fourier05.jpg"><img class="borderless" src="thumbnails/Fourier05.jpg" width="168" height="99" alt="Fourier05"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">sample wave</td>
+              <td class="center-small">フーリエ変換結果（<a href="images/Fourier06.jpg" title="1">実部</a>と<a href="images/Fourier07.jpg" title="1">虚部</a>）</td>
+            </tr>
+            <tr>
+              <td class="center-small"><a href="images/Fourier09.jpg"><img class="borderless" src="thumbnails/Fourier09.jpg" width="338" height="99" alt="Fourier09"></a></td>
+              <td class="center-small"><a href="images/Fourier08.jpg"><img class="borderless" src="thumbnails/Fourier08.jpg" width="168" height="99" alt="Fourier08"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">逆フーリエ変換を施した復元データ</td>
+              <td class="center-small">パワースペクトル</td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>矩形波：square wave</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Fourier22.jpg"><img class="borderless" src="thumbnails/Fourier22.jpg" width="338" height="99" alt="Fourier22"></a></td>
+              <td class="center-small"><a href="images/Fourier23.jpg"><img class="borderless" src="thumbnails/Fourier23.jpg" width="168" height="99" alt="Fourier23"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">square wave</td>
+              <td class="center-small">フーリエ変換結果（<a href="images/Fourier24.jpg" title="2">実部</a>と<a href="images/Fourier25.jpg" title="2">虚部</a>）</td>
+            </tr>
+            <tr>
+              <td class="center-small"><a href="images/Fourier27.jpg"><img class="borderless" src="thumbnails/Fourier27.jpg" width="338" height="99" alt="Fourier27"></a></td>
+              <td class="center-small"><a href="images/Fourier26.jpg"><img class="borderless" src="thumbnails/Fourier26.jpg" width="168" height="99" alt="Fourier26"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">逆フーリエ変換を施した復元データ</td>
+              <td class="center-small">パワースペクトル</td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>三角波：triangle wave</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Fourier28.jpg"><img class="borderless" src="thumbnails/Fourier28.jpg" width="338" height="99" alt="Fourier28"></a></td>
+              <td class="center-small"><a href="images/Fourier29.jpg"><img class="borderless" src="thumbnails/Fourier29.jpg" width="168" height="99" alt="Fourier29"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">triangle wave</td>
+              <td class="center-small">フーリエ変換結果（<a href="images/Fourier30.jpg" title="3">実部</a>と<a href="images/Fourier31.jpg" title="3">虚部</a>）</td>
+            </tr>
+            <tr>
+              <td class="center-small"><a href="images/Fourier33.jpg"><img class="borderless" src="thumbnails/Fourier33.jpg" width="338" height="99" alt="Fourier33"></a></td>
+              <td class="center-small"><a href="images/Fourier32.jpg"><img class="borderless" src="thumbnails/Fourier32.jpg" width="168" height="99" alt="Fourier32"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">逆フーリエ変換を施した復元データ</td>
+              <td class="center-small">パワースペクトル</td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>ノコギリ波：sawtooth wave</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Fourier16.jpg"><img class="borderless" src="thumbnails/Fourier16.jpg" width="338" height="99" alt="Fourier16"></a></td>
+              <td class="center-small"><a href="images/Fourier17.jpg"><img class="borderless" src="thumbnails/Fourier17.jpg" width="168" height="99" alt="Fourier17"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">sawtooth wave</td>
+              <td class="center-small">フーリエ変換結果（<a href="images/Fourier18.jpg" title="4">実部</a>と<a href="images/Fourier19.jpg" title="4">虚部</a>）</td>
+            </tr>
+            <tr>
+              <td class="center-small"><a href="images/Fourier21.jpg"><img class="borderless" src="thumbnails/Fourier21.jpg" width="338" height="99" alt="Fourier21"></a></td>
+              <td class="center-small"><a href="images/Fourier20.jpg"><img class="borderless" src="thumbnails/Fourier20.jpg" width="168" height="99" alt="Fourier20"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">逆フーリエ変換を施した復元データ</td>
+              <td class="center-small">パワースペクトル</td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>低周波から高周波までの全域が含まれる波（チャープ信号）：chirp signal</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Fourier10.jpg"><img class="borderless" src="thumbnails/Fourier10.jpg" width="338" height="99" alt="Fourier10"></a></td>
+              <td class="center-small"><a href="images/Fourier11.jpg"><img class="borderless" src="thumbnails/Fourier11.jpg" width="168" height="99" alt="Fourier11"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">chirp signal</td>
+              <td class="center-small">フーリエ変換結果（<a href="images/Fourier12.jpg" title="5">実部</a>と<a href="images/Fourier13.jpg" title="5">虚部</a>）</td>
+            </tr>
+            <tr>
+              <td class="center-small"><a href="images/Fourier15.jpg"><img class="borderless" src="thumbnails/Fourier15.jpg" width="338" height="99" alt="Fourier15"></a></td>
+              <td class="center-small"><a href="images/Fourier14.jpg"><img class="borderless" src="thumbnails/Fourier14.jpg" width="168" height="99" alt="Fourier14"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">逆フーリエ変換を施した復元データ</td>
+              <td class="center-small">パワースペクトル</td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>加えて、バタフライ演算（J.W.Cooley, J.W.Tukey: An Algorithm for the Machine Calculation of Complex Fourier Series, Mathematics of Computation, Vol.19 1965.）などを導入して必ず高速化を図ること。高速化できなければ、使い物にならない。ソフトウェア工学的に計算量を見積もれば、すなわち、ランダウの記号（O-記法）を用いてアルゴリズムの計算量解析をしてみれば、すぐに判明する。</p>
+  <p>一次元の高速な離散フーリエ変換ができあがったら、それを二次元へと拡張し、グレースケール画像やカラー画像に対して適用できるようにすること。横方向（x軸）に一次元のフーリエ変換を施した結果に対して、もう一度、縦方向（y軸）に施す。すなわち、二次元のフーリエ変換は一次元のフーリエ変換の乗算である。</p>
+  <p>フーリエさんのグレースケール画像：（<a href="images/JosephFourier1.jpg" title="g1">128×128</a>・<a href="images/JosephFourier3.jpg" title="g2">256×256</a>）</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Fourier50.jpg"><img class="borderless" src="thumbnails/Fourier50.jpg" width="128" height="128" alt="Fourier50"></a></td>
+              <td class="center-small" rowspan="2">→【フーリエ変換】→</td>
+              <td class="center-small"><a href="images/Fourier51.jpg"><img class="borderless" src="thumbnails/Fourier51.jpg" width="128" height="128" alt="Fourier51"></a></td>
+              <td class="center-small" rowspan="2">→【逆フーリエ変換】→</td>
+              <td class="center-small"><a href="images/Fourier53.jpg"><img class="borderless" src="thumbnails/Fourier53.jpg" width="128" height="128" alt="Fourier53"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">グレースケール画像</td>
+              <td class="center-small">パワースペクトル</td>
+              <td class="center-small">復元画像</td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>フーリエさんのカラー画像：（<a href="images/JosephFourier2.jpg" title="f1">128×128</a>・<a href="images/JosephFourier4.jpg" title="f2">256×256</a>・<a href="images/JosephFourier5.jpg" title="f3">256×512</a>・<a href="images/JosephFourier6.jpg" title="f4">256×293</a>・<a href="images/JosephFourier7.jpg" title="f5">512×512</a>）</p>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Fourier54.jpg"><img class="borderless" src="thumbnails/Fourier54.jpg" width="128" height="128" alt="Fourier54"></a></td>
+              <td class="center-small" rowspan="2">→【フーリエ変換】→</td>
+              <td class="center-small"><a href="images/Fourier55.jpg"><img class="borderless" src="thumbnails/Fourier55.jpg" width="128" height="128" alt="Fourier55"></a></td>
+              <td class="center-small" rowspan="2">→【逆フーリエ変換】→</td>
+              <td class="center-small"><a href="images/Fourier57.jpg"><img class="borderless" src="thumbnails/Fourier57.jpg" width="128" height="128" alt="Fourier57"></a></td>
+            </tr>
+            <tr>
+              <td class="center-small">カラー画像</td>
+              <td class="center-small">パワースペクトル</td>
+              <td class="center-small">復元画像</td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>そして最後には、信号処理アプリケーションに仕上げなければならない。一次元においても、二次元においても、フーリエ変換の結果であるパワースペクトルを対話的に編集することで、逆フーリエ変換を施した復元データ（復元画像）を調整できる機能を必ず組み込むこと。その様子を以下に示す。右下のサブウィンドウの中で、右上のパワースペクトルのどこの部分を採用するのかを指定し、それによって左下の復元データが左右されるのを見て取れるであろう。</p>
+  <p><a href="images/FourierApp2.jpg"><img class="borderless" src="thumbnails/FourierApp2.jpg" width="540" height="201" alt="FourierApp2"></a></p>
+  <p><a href="images/FourierApp1.jpg"><img class="borderless" src="thumbnails/FourierApp1.jpg" width="540" height="201" alt="FourierApp1"></a></p>
+  <p><a href="images/FourierApp3.jpg"><img class="borderless" src="thumbnails/FourierApp3.jpg" width="190" height="201" alt="FourierApp3"></a> <a href="images/FourierApp4.jpg"><img class="borderless" src="thumbnails/FourierApp4.jpg" width="192" height="353" alt="FourierApp4"></a></p>
+  <p>以上、ここに記したことを忠実に実現（MVCのウィンドウの中に処理の経過および結果をきちんと可視化）しなければならない。フーリエ変換し復元する一連の処理速度は、画像データ（元データ）の大きさに依存するが、ピクセル数が512×512ぐらいのカラー画像（25万6千個の3倍のデータ）であっても、ストレス無く使用できる（マウス操作でパワースペクトルを編集した際に復元画像が追随して計算される）アプリケーションに仕立て上げること。</p></li>
+  <li><a name="SeigenJikou">制限事項</a>
+  <p>Java・Python・Smalltalkの標準ライブラリ（必要であれば拡張ライブラリ）を使用（援用）して開発すること。Macintoshシリーズをターゲットにしているが、実装に用いるJava・Python・Smalltalkはプラットフォーム非依存性を仮想マシンによって実現しているプログラミング言語である。したがって、開発したアプリケーションはLinuxやWindowsなどでも動作することが望ましい。</p></li>
+</ul>
+<div class="belt">
+<h3><a name="KaihatsuTaisei">開発体制</a></h3>
+</div>
+<p>開発に関わるメンバの一覧を作成し、プロジェクトマネージャ、デザイナ、プログラマ、テスタなどの役割を明確化し、加えて、開発するコンポーネント（部品＝クラス）毎に担当者を決めて、それらを開発計画書の中に明記すること。また、仕様適合検査の責任者を立て、次項の開発スケジュールに示されたマイルストーン（目標達成へ向かう過程の一つの段階）ごとに、設計段階から仕様のチェックをクライアント（開発依頼者＝青木淳）と共に行うこと。開発にあたって不明なことが生じた場合には、必ずクライアントと協議して事を進めなければならない。</p>
+<div class="belt">
+<h3><a name="KaihatsuSchedule">開発スケジュール</a></h3>
+</div>
+<p>開発スケジュールを前項の開発体制と共に開発計画書の中に明記し、着手する前にクライアントの認可を受ける（契約を取り交わす）こと。実際の開発はプロジェクト演習の15週間で行うこと。授業（15週間分）の30コマ（1コマは90分）の時間を開発に充当させてよい。開発時間が足りない場合には、適宜、他の空き時間を使って、15週間以内での開発（納品＆リリース）を厳守しなければならない。</p>
+<hr>
+<div class="right-small">Copyright 2009-2020 AOKI Atsushi, Updated: 2020/03/19 (Created: 2009/11/11)</div>
+</body>
+</html>

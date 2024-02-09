@@ -1,0 +1,2208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+  <meta name="description" content="プロジェクト演習のホームページ">
+  <meta name="author" content="AOKI Atsushi">
+  <link rev="made" href="index.html">
+  <link rel="index" href="index.html">
+  <style type="text/css">
+    <!--
+    body {
+      background-color: #ffffff;
+      margin: 20px;
+      padding: 10px;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #000000;
+    }
+
+    a:link {
+      background-color: #ffddbb;
+    }
+
+    a:visited {
+      background-color: #ccffcc;
+    }
+
+    a:hover {
+      background-color: #dddddd;
+    }
+
+    a:active {
+      background-color: #dddddd;
+    }
+
+    div.belt {
+      background-color: #eeeeee;
+      padding: 0px 4px;
+    }
+
+    div.belt-yellow {
+      background-color: #ffffcc;
+      padding: 0px 4px;
+    }
+
+    div.belt-blue {
+      background-color: #ddeeff;
+      padding: 0px 4px;
+    }
+
+    div.right-small {
+      text-align: right;
+      font-size: 8pt;
+    }
+
+    img.border {
+      border-width: 1px;
+      border-color: #000000;
+      vertical-align: middle;
+    }
+
+    img.borderless {
+      border-width: 0px;
+      vertical-align: middle;
+    }
+
+    p.belt {
+      background-color: #ffeedd;
+      padding: 4px 8px;
+    }
+
+    p.belt-blue {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt {
+      background-color: #ddeeff;
+      padding: 4px 8px;
+    }
+
+    pre.belt-yellow {
+      background-color: #ffffcc;
+      padding: 4px 8px;
+    }
+
+    table {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+    }
+
+    table.profile {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      font-family: serif;
+      font-size: 10pt;
+      margin-top: 8px;
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    table.belt {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      background-color: #ffeedd;
+      padding: 0px 0px;
+      width: 100%;
+    }
+
+    table.content {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+    }
+
+    table.font-fixed {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 2px 4px;
+      font-family: monospace;
+    }
+
+    table.nest {
+      border-style: solid;
+      border-width: 0px;
+      border-color: #000000;
+      padding: 0px 0px;
+    }
+
+    td {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    td.center {
+      text-align: center;
+    }
+
+    td.center-half {
+      text-align: center;
+      width: 50%;
+      font-size: 8pt;
+    }
+
+    td.center-small {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.center-small-nopadding {
+      text-align: center;
+      font-size: 8pt;
+      padding: 0px 0px;
+    }
+
+    td.center-white {
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    td.center-small-white {
+      text-align: center;
+      font-size: 8pt;
+      background-color: #ffffff;
+    }
+
+    td.center-border1 {
+      text-align: center;
+      vertical-align: middle;
+      empty-cells: show;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ffc080;
+      width: 22px;
+      height: 22px;
+    }
+
+    td.left-small {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.left-small-white {
+      text-align: left;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    td.right-small {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+    }
+
+    td.right-small-white {
+      text-align: right;
+      font-size: 8pt;
+      padding: 0px 4px;
+      background-color: #ffffff;
+    }
+
+    th {
+      padding: 0px 0px;
+      vertical-align: middle;
+    }
+
+    #menu {
+      margin: 0px 0px 0px 0px;
+      padding: 0px;
+      height: 32px;
+    }
+
+    #menu ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      text-align: center;
+      clear: both;
+    }
+
+    #menu li {
+      margin: 0px 5px 0px 0px;
+      padding: 0px;
+      float: left;
+    }
+
+    #menu a {
+      display: block;
+      padding: 2px 4px;
+      text-decoration: none;
+      margin: 0px;
+      font-weight: bold;
+      background: #FFFFFF;
+      color: #333333;
+      border: 1px solid #666666;
+    }
+
+    #menu a:hover {
+      display: block;
+      padding: 2px 4px;
+      border-bottom: 1px solid #000000;
+      text-decoration: none;
+      background: #FFCC66;
+    }
+
+    #menu .current {
+      background-color: #F45F57;
+      font-weight: bold;
+      color: #FFFFFF;
+      border: 1px solid #333333;
+    }
+    -->
+  </style>
+  <title>プロジェクト演習「フーリエ信号処理」テスト仕様書</title>
+</head>
+
+<body>
+  <div id="menu">
+    <ul>
+      <li><a href="../index.html">ホーム</a></li>
+      <li><a href="../Requirement/index.html">要求仕様書</a></li>
+      <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+      <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+      <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+      <li><a href="../TestSpecification/index.html" class="current">テスト仕様書</a></li>
+      <li><a href="../TestResult/index.html">テスト結果</a></li>
+      <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+      <li><a href="../Program/index.html">プログラム</a></li>
+      <li><a href="../Manual/index.html">マニュアル</a></li>
+    </ul>
+  </div>
+  <hr>
+  <h2>プロジェクト演習「フーリエ信号処理」テスト仕様書</h2>
+  <ul>
+    <li><a href="#Example">Example</a>（メインクラス）</li>
+    <li><a href="#Example1d">Example1d</a>（一次元メインクラス）</li>
+    <li><a href="#Example2d">Example2d</a>（二次元メインクラス）</li>
+    <li><a href="#FourierTransformation">FourierTransformation</a>（フーリエ変換）</li>
+    <li><a href="#ContinuousFourierTransformation">ContinuousFourierTransformation</a>（連続フーリエ変換）</li>
+    <li><a href="#DiscreteFourierTransformation">DiscreteFourierTransformation</a>（離散フーリエ変換）</li>
+    <li><a href="#DiscreteFourier1dTransformation">DiscreteFourier1dTransformation</a>（一次元離散フーリエ変換）</li>
+    <li><a href="#DiscreteFourier2dTransformation">DiscreteFourier2dTransformation</a>（二次元離散フーリエ変換）</li>
+    <li><a href="#FourierModel">FourierModel</a>（フーリエモデル）</li>
+    <li><a href="#Fourier1dModel">Fourier1dModel</a>（フーリエ一次元モデル）</li>
+    <li><a href="#Fourier2dModel">Fourier2dModel</a>（フーリエニ次元モデル）</li>
+    <li><a href="#FourierPaneModel">FourierPaneModel</a>（フーリエペインモデル）</li>
+    <li><a href="#FourierPaneView">FourierView</a>（フーリエペインビュー）</li>
+    <li><a href="#FourierPaneController">FourierPaneController</a>（フーリエペインコントローラ）</li>
+  </ul>
+  <div class="belt">
+    <h3><a name="Example1d">Example（メインクラス）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>main(String[] arguments)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public static</code></td>
+                <td class="left-padding"></td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3><a name="Example1d">Example1d（一次元メインクラス）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>fileNo = 0;</code></td>
+                <td class="left-padding"><code>int</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">画像をファイルに書き出す際の番号。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>displayPoint = new Point(30, 50);</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ウィンドウの表示位置</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>offsetPoint offsetPoint = new Point(25, 25);</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ウィンドウをずらして表示してゆく際の支距。</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>main(String[] in arguments)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の例題プログラム群を実行する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example1()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の例題プログラム(いくつかの正弦波と余弦波の合成波)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example2()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の例題プログラム(いくつかの正弦波と余弦波の合成波)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example3()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の例題プログラム(チャープ信号:低周波から高周波に周波数が連続的に変わる信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example4()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の例題プログラム(のこぎり波:波形の見た目が鋸の歯のような信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example5()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の例題プログラム(矩形波:二つのレベルの間を規則的かつ瞬間的に変化する信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example6()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の例題プログラム(三角波:波形の見た目が三角形のような信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>perform(double[] in sourceData)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データ(sourceData)に離散フーリエ1次元変換を施して結果を表示する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>open(Jpanel in aPanel)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">レイアウトされたパネル(aPanel)を受け取り、それをウィンドウに乗せて開く。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>write(Bufferdlmage in animage)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">画像(anImage)をファイルに書き出す。</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3><a name="Example2d">Example2d（二次元メインクラス）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>fileNo = 50</code></td>
+                <td class="left-padding"><code>int</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">int型のfileを50にする</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>displayPoint</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">ディスプレイを(330,50)に設定</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>offsetPoint</code></td>
+                <td class="left-padding"><code>Point</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">スクロール量としてPointのインスタンスを束縛する</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>main(String[] in arguments)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">2次元画像をフーリエ変換してそ結果を表示させるプログラム</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example1()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ2次元変換の例題プログラム(4×4の2次元配列)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example2()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ2次元変換の例題プログラム(ジョゼフ・フーリエさんのグレースケール画像)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>example3()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ2次元変換の例題プログラム(ジョゼフ・フーリエさんのカラー画像)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>perform(double[] in sourceData)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データ(sourceData)に離散フーリエ2次元変換を施して結果を表示する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>open(Jpanel in aPanel, Dimension in Dimension)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">レイアウトされたパネル(aPanel)と大きさ(aDimension)を受け取り、それをウィンドウに乗せて開く。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>write(Bufferdlmage in animage)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">画像(anImage)をファイルに書き出す。</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3><a name="FourierTransformation">FourierTransformation（フーリエ変換）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>FourierTransformation</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">フーリエ変換のインスタンスを作るコンストラクタ。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>initialize()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換を初期化する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>transform()</code></td>
+                <td class="left-padding"><code>FourierTransformation</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">フーリエ変換を施すための抽象メソッド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseTransform()</code></td>
+                <td class="left-padding"><code>FourierTransformation</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">逆フーリエ変換を施すための抽象メソッド。</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="belt">
+    <h3><a name="ContinuousFourierTransformation">ContinuousFourierTransformation（連続フーリエ変換）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>ContinuousFourierTransformation</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">連続フーリエ変換のインスタンスを作るコンストラクタ。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>transform()</code></td>
+                <td class="left-padding"><code>FourierTransformation</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">連続フーリエ変換を施す。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseTransform()</code></td>
+                <td class="left-padding"><code>FourierTransformation</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">逆連続フーリエ変換を施す。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="belt">
+    <h3><a name="DiscreteFourierTransformation">DiscreteFourierTransformation（離散フーリエ変換）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>initialize()</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ変換を初期化する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>flush</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected abstract</code></td>
+                <td class="left-padding">離散フーリエ変換の結果を水に流す抽象メソッド。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>swap(double[] valueArray)</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">1次元配列(valueArray)を横半分のところでスワップした新たな1次元配列を応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>swap(double[][] valueMatrix)</code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">2次元配列(valueMatrix)を縦横半分のところでスワップした新たな2次元配列を応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3><a name="DiscreteFourier1dTransformation">Discrete1dFourierTransformation（一次元離散フーリエ変換）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>sourceRealPartt</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データの実部を保持するフィールド。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>sourceImaginaryPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データの虚部を保持するフィールド。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>destinationRealPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換を施した実部を保持するフィールド。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>destinationImaginarPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換を施した虚部を保持するフィールド。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>DiscreteFourier1dTransformation(double[] sourceRealData)</a></code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">元データの実部だけを指定して離散フーリエ1次元変換のインスタンスを作るコンストラクタ。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>DiscreteFourier1dTransformation(double[] sourceRealData, double[] sourceImaginaryData)</a></code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>pubulic</code></td>
+                <td class="left-padding">元データの実部と虚部を指定して離散フーリエ1次元変換のインスタンスを作るコンストラクタ。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>flush()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding"><離散フーリエ変換の結果を水に流す。/td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>imaginaryPart()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換(順変換)を施した虚部を応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>initialize()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ変換を初期化する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>initialize(double[] sourceRealData, double[] sourceImaginaryData)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ変換を初期化する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseImaginaryPart()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">逆離散フーリエ変換(逆変換)を施した虚部を応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseRealPart</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">逆離散フーリエ変換(逆変換)を施した実部を応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseTransform</a></code></td>
+                <td class="left-padding"><code>DiscreteFourier1dTransformation</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">逆離散フーリエ変換(逆変換)を施す。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>isPowerOfTwo(int n)</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">ある整数(n)が2のN乗であるかどうかを応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>logarithmicArray(double[] anArray)</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">配列(anArray)の対数を取って応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedArray(double[] anArray)</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">配列(anArray)を正規化して応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedLogarithmicPowerSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果の正規化対数パワースペクトルを応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedLogarithmicSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果の正規化対数スペクトルを応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedPowerSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果の正規化パワースペクトルを応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding"> 離散フーリエ変換を施した結果の正規化スペクトルを応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>powerOfTwo(int n)</a></code></td>
+                <td class="left-padding"><code>int</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">ある整数(n)が2のN乗であるとき、そのNを応答する。それ以外のときは、0を応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>powerSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果のパワースペクトルを応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>realPart()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換(順変換)を施した実部を応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>spectrum()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果のスペクトルを応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>squareRootArray(double[] anArray)</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">配列(anArray)の平方根を取って応答する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>transform()</a></code></td>
+                <td class="left-padding"><code>DiscreteFourier1dTransformation transform()</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換(順変換)を施す。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>transform(int flag)</a></code></td>
+                <td class="left-padding"><code>DiscreteFourier1dTransformation transform(int flag)</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ変換を施す。flagが1の時は順変換。flagが-1の時は逆変換。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>turboTransform(int flag)</a></code></td>
+                <td class="left-padding"><code>DiscreteFourier1dTransformation turboTransform(int flag)</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">高速離散フーリエ変換を施す。flagが1の時は順変換。flagが-1の時は逆変換。Cooley-Tukeyのアルゴリズム(蝶(Butterfly)演算)で高速化する。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr> <tr>
+                <td class="left-padding"><code>turboTransformInitialize(double[] x, double[] y, int power)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">高速離散フーリエ変換のための置き換え。Cooley-Tukeyのアルゴリズムを適用するための準備。</td>
+                <td class="left-padding">良好(2023年7月24日)</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3><a name="DiscreteFourier2dTransformation">Discrete2dFourierTransformation（二次元離散フーリエ変換）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>sourceRealPartt</code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データの実部を保持するフィールド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>sourceImaginaryPart</code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データの虚部を保持するフィールド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>destinationRealPart</code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換を施した実部を保持するフィールド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>destinationImaginarPart</code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換を施した虚部を保持するフィールド。</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>DiscreteFourier2dTransformation(double[][] sourceRealData)</a></code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">元データの実部だけを指定して離散フーリエ2次元変換のインスタンスを作るコンストラクタ。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>DiscreteFourier2dTransformation(double[][] sourceRealData, double[][] sourceImaginaryData)</a></code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>pubulic</code></td>
+                <td class="left-padding">元データの実部と虚部を指定して離散フーリエ2次元変換のインスタンスを作るコンストラクタ。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>flush()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ変換の結果を水に流す。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>imaginaryPart()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換(順変換)を施した虚部を応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>initialize()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding"> 離散フーリエ変換を初期化する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>initialize(double[][] sourceRealData, double[][] sourceImaginaryData)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding"> 離散フーリエ変換を初期化する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseImaginaryPart()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">逆離散フーリエ変換(逆変換)を施した虚部を応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseRealPart</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">逆離散フーリエ変換(逆変換)を施した実部を応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseTransform</a></code></td>
+                <td class="left-padding"><code>DiscreteFourier2dTransformation</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">逆離散フーリエ変換(逆変換)を施す。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>logarithmicMatrix(double[][] aMatrix)</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">行例(aMatrix)の対数を取って応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedLogarithmicPowerSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果の正規化対数パワースペクトルを応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedLogarithmicSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果の正規化対数スペクトルを応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedMatrix(double[][] aMatrix)</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">行例(aMatrix)を正規化して応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedPowerSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果の正規化パワースペクトルを応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>normalizedSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果の正規化スペクトルを応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>powerSpectrum()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果のパワースペクトルを応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>realPart()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換(順変換)を施した実部を応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>spectrum()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換を施した結果のスペクトルを応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>squareRootMatrix(double[][] aMatrix)</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">行例(aMatrix)の平方根を取って応答する。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>transform()</a></code></td>
+                <td class="left-padding"><code>DiscreteFourier2dTransformation transform()</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換(順変換)を施す。</td>
+                <td class="left-padding"></td>
+              </tr> <tr>
+                <td class="left-padding"><code>transform(int flag)</a></code></td>
+                <td class="left-padding"><code>DiscreteFourier2dTransformation transform(int flag)</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">離散フーリエ変換を施す。flagが1の時は順変換。flagが-1の時は逆変換。</td>
+                <td class="left-padding"></td>
+              </tr> 
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3><a name="FourierModel">FourierModel（フーリエモデル）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>accuracy</code></td>
+                <td class="left-padding"><code>double = 1.0E - 5d</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">精度を決める。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>imageWidth</code></td>
+                <td class="left-padding"><code>int = 1024</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">画像の幅を決める。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>imageHeight</code></td>
+                <td class="left-padding"><code>int = 300</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">画像の高さを決める。</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>actionPerformed(in anActionEvent : ActionEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ポップアップメニューの項目が選択されたときの処理をする抽象メソッド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>computeFromPoint(in aPoint : Point, in isAltDown : boolean)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">指定された座標に対応するインタラクティブな実部と虚部を編集して計算を行う。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>computeInverseData()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">インタラクティブな実部と虚部から計算(元データの復元)を行う。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>data4×4() </a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ2次元変換のための元データ(4×4の2次元配列)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dataChirpSignal()</a></code></td>
+                <td class="left-padding"><code>double</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換のための元データ(チャープ信号:低周波から高周波に周波数が連続的に変わる信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dataFourierColor()</a></code></td>
+                <td class="left-padding"><code>double[][][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ2次元変換のための元データ(ジョゼフ・フーリエさんのカラー画像)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dataFourierGrayScale()</a></code></td>
+                <td class="left-padding"><code>double[][]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ2次元変換のための元データ(ジョゼフ・フーリエさんのグレースケール画像)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dataSawtoothWave()</a></code></td>
+                <td class="left-padding"><code>viod</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換のための元データ(矩形波:二つのレベルの間を規則的かつ瞬間的に変化する信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dataSquareWave()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換のための元データ(矩形波:二つのレベルの間を規則的かつ瞬間的に変化する信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dataSampleWave()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換のための元データ(いくつかの正弦波と余弦波の合成波)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>dataTriangleWave()</a></code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換のための元データ(三角波:波形の見た目が三角形のような信号)。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>fill(double[] in anArray, double in aValue)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">1次元配列の中を指定された値で初期化する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code></a>fill(double[][] in aMatrix, double in aValue)</code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マトリックス(2次元配列)の中を指定された値で初期化する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>generateImageForData(double[][] in IuminaceMatrix)</a></code></td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ2次元変換のデータYをグレースケール画像に変換して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>generateImageForData(double[][] in yMatrix, double[][] in uMatrix, double[][] in vMatrix)</a></code>
+                </td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ2次元変換のデータYをUとVと共にカラー画像に変換して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>generateImageForData(double[][][] in yuvMatrixes)</a></code></td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ2次元変換のデータYをUとVと共にカラー画像に変換して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>generateImageForData(double[] in valueCollection)</a></code></td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換のデータを画像に変換して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>generateImageForParts(double[] in realPart, double[] in imaginaryPart)</a></code>
+                </td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の実部と虚部を画像に変換して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>generateImageForSpectrum(double[] in aSpectrum)</a></code></td>
+                <td class="left-padding"><code>BufferedImage</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換のスペクトルを画像に変換して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>generateImageForTwoParts(double[] in realPart, double[] in imaginaryPart)</a></code>
+                </td>
+                <td class="left-padding"><code> ArrayList<BufferedImage></code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ1次元変換の実部と虚部を画像群(0:実部の画像,1:虚部の画像)に変換して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>isAllZero(double[][] in aMatrix)</a></code></td>
+                <td class="left-padding"><code>boolean</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">行列の中がすべて零であるか否かを応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>isNotAllZero(double[][] in aMatrix)</a></code></td>
+                <td class="left-padding"><code>boolean</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">行列の中がすべて零でないか否かを応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseClicked(Point in aPoint, MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスクリックした位置をピクチャ座標として受け取り、それを処理する抽象メソッド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseDragged(Point in aPoint, MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスドラッグした位置をピクチャ座標として受け取り、それを処理する抽象メソッド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>normalize(double[] in valueCollection)</a></code></td>
+                <td class="left-padding"><code>double</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">元データや逆変換データを正規化して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>normalize(double[] in realPart, double[] in imaginaryPart)</a></code>
+                </td>
+                <td class="left-padding"><code>ArrayList<double[]></code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">実部と虚部を同時に正規化して応答する。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>open()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">離散フーリエ変換のモデルのウィンドウを開く。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>showPopupMenu(MouseEvent in aMouseEvent, FourierPaneController in aController)</a></code>
+                </td>
+                <td class="left-padding"><code>vioid</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">メニューをポップアップする抽象メソッド。</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="belt">
+    <h3><a name="Fourier1dModel">Fourier1dModel（フーリエ一次元モデル）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>sourceData</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データの実部を保持するフィールド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>realPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データの虚部を保持するフィールド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>imaginaryPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換を施した実部を保持するフィールド。</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>powerSpectrum</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">パワースペクトル</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactiveRealPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">実部の双方向性</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactiveImaginaryPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">虚部の双方向性</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactivePowerSpectrum</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">パワースペクトルの双方向性</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseData</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">データの逆数</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>sourceDataPaneModel</code></td>
+                <td class="left-padding"><code>FourierPaneModel</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元データの枠組</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>powerSpectrumPaneModel</code></td>
+                <td class="left-padding"><code>FourierPaneModel</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">パワースペクトルの枠組</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactivePowerSpectrumPaneModel</code></td>
+                <td class="left-padding"><code>FourierPaneModel</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">双方向性パワースペクトルの枠組</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactiveDataPaneModel</code></td>
+                <td class="left-padding"><code>FourierPaneModel</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">双方向性データの枠組</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>PaneController()</a></code></td>
+                <td class="left-padding"><code>instance</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ペインコントローラ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>actionPerformed(ActionEvent in anActionEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">作用を実行</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>computeFromPoint(Point in aPoint, boolean in isAltDown)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">数値を計算する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>computeInverseData()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">逆数を計算する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doAllSpectrum()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">全てのスペクトルに対して実行する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doChirpSignal()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">チャープ信号を算出する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doClearSpectrum()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">スペクトルを削除する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doSawtoothMove()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ノコギリ波を形成する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doSquareWave()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">矩形波を生成する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doSampleWave()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">サンプル波を生成する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doTriangleWave()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">三角波を生成する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseClicked(Point in aPoint, MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスクリックに対応させる</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseDragged(Point in aPoiny, MouseEvent In aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスドラッグに対応させる</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>open()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">開く</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setSourceData(double[] in sourceDataArray)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ソースデータを設定する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>showPopupMenu(MouseEvent in aMouseEvent, FourierPaneController in aController)</a></code>
+                </td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">メニュを表示させる</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="belt">
+    <h3><a name="Fourier2dModel">Fourier2dModel（フーリエ二次元モデル）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>souceData</code></td>
+                <td class="left-padding"><code></code>double[]</td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元画像の配列データ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>realPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換後の実部</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>imaginaryPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">フーリエ変換後の虚部</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>powerSpectrum</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">パワースペクトラムを持つ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactiveRealPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">マウス操作で変更可能な実部</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactiveImaginaryPart</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">マウス操作で変更可能な虚部</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactivePowerSpectrum</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">マウス操作で変更可能なパワースペクトル</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>inverseData</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">逆画像を施した画像</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>sourceDataPaneModel</code></td>
+                <td class="left-padding"><code>FourierPaneModel</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">元画像のPaneModel</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>powerSpectrumPaneModel</code></td>
+                <td class="left-padding"><code>FourierPaneModel</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">パワースペクトル画像のPaneModel</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>interactivePowerSpectrumPaneModel</code></td>
+                <td class="left-padding"><code>FourierPaneModel</code></td>
+                <td class="left-padding"><code>protected</code></td>
+                <td class="left-padding">逆画像のPaneModel</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>yuvSourceData</code></td>
+                <td class="left-padding"><code>double[]</code></td>
+                <td class="left-padding"><code>package</code></td>
+                <td class="left-padding">カラー画像を格納する配列</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>Fourier2dModel()</a></code></td>
+                <td class="left-padding"><code>instance</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">computefrompoint:Pointからinteractiveな配列を操作する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>actionPerformed(ActionEvent in anActionEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">Fourier2dModel:2次元のフーリエ変換を行うクラスのコンストラクタ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>computeFromPoint(Point in aPoint, boolean in isAltDown)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">Pointからinteractiveな配列を操作する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>computeInverseData()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">現在のインタラクティブな配列から逆変換処理を行う</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doAllSpectrum()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">インタラクティブな配列をそれぞれの配列と同等にする</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doClearSpectrum()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">interactiveデータをリセットする</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doFourierColor()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">操作対象をカラー画像に変更する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>doFourierGrayScale()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">操作対象をグレースケール画像に変更する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseClicked(Point in aPoint, MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスクリックの時の動作を決定</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseDragged(Point in aPoiny, MouseEvent In aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスドラッグの時の動作を決定</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>open()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ウィンドウを開ける</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>setSourceData(double[] in sourceDataArray)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">配列の設定を行う</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>showPopupMenu(MouseEvent in aMouseEvent, FourierPaneController in aController)</a></code>
+                </td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ポップアップメニューの表示</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="belt">
+    <h3><a name="FourierPaneModel">FourierPaneModel（フーリエペインモデル）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>label</code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">4つのウィンドウどれかを判別するラベル</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>listener</code></td>
+                <td class="left-padding"><code>FourierModel</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">自身を作成したFourierModelを持つ</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>FourierPaneModel()</a></code></td>
+                <td class="left-padding"><code>instance</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">デフォルトのコンストラクタ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>FourierPaneModel(String in aString)</a></code></td>
+                <td class="left-padding"><code>instance</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">Exampleからペインモデルを作るコンストラクタ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>FourierPaneModel(BufferedImage in anlmage, String in aString)</a></code>
+                </td>
+                <td class="left-padding"><code>instance</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ファイル名からペインモデルを作るコンストラクタ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>FourierPaneModel(BufferedImage in anlmage, String in aString, FourierModel in aModel)</a></code>
+                </td>
+                <td class="left-padding"><code>instance</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">FourierModelから呼び出すコンストラクタ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>actionPerformed(ActionEvent in anActonEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">クリックなどのアクションが発生した時に処理する</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>isInteractive()</a></code></td>
+                <td class="left-padding"><code>boolean</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">現在のユーザからインタラクションを受け付ける常態かを返す</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>isNotInteractive()</a></code></td>
+                <td class="left-padding"><code>boolean</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">現在のユーザからインタラクションを受け付けない状態かどうかを返す</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>label()</a></code></td>
+                <td class="left-padding"><code>String</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ラベルを返す</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseClicked(Point in aPoint, MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスクリックの時の動作</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>moouseDragged(Point in aPoint, MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスドラッグの時の動作</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>showPopupMenu(MouseEvent in aMouseEvent, FourierPaneController in aController)</a></code>
+                </td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ポップアップメニュ表示の動作</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="belt">
+    <h3><a name="FourierView">FourierPaneView（フーリエペインビュー）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding"><code>なし</code></td>
+                <td class="left-padding">なし</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>FourierPaneView(FourierpaneModel in aModel)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">指定されたモデルから結果を受け取る</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding">
+                  <code>FourierPaneView(FourierpaneModel in aModel, FourierPaneController in aController)</a></code>
+                </td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">指定されたモデルとコントローラーから結果を受け取る</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>paintComponent(int in aGraphics)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">描画を行う</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="belt">
+    <h3><a name="FourierView">FourierPaneController（フーリエペインコントローラ）</a></h3>
+  </div>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+                <th class="left-padding" abbr="2">束縛</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>isMenuPopuping</code></td>
+                <td class="left-padding"><code>boolean</code></td>
+                <td class="left-padding"><code>private</code></td>
+                <td class="left-padding">メニューポップアップを出すかどうか(真・偽を保持するフィールド)</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table summary="table">
+    <tbody>
+      <tr>
+        <td>
+          <table border="1" summary="table">
+            <tbody>
+              <tr>
+                <th class="left-padding" abbr="1">メソッド（操作）</th>
+                <th class="left-padding" abbr="2">応答</th>
+                <th class="left-padding" abbr="3">分類</th>
+                <th class="left-padding" abbr="4">説明</th>
+                <th class="left-padding" abbr="5">テスト結果</th>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>FourierPaneController()</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">フーリエ変換の窓のコントローラ</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>actionPerformed(ActionEvent in anActionEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">アクションイベントが起きることをモデルに通知</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseClicked(MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスクリックした位置をピクチャ座標にしてモデルに通知</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseDragged(MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスドラッグした位置をピクチャ座標にしてモデルに通知</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseMoved(MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスが動いた位置をピクチャ座標にしてモデルに通知</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mousePressed(MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスが押し続けられた位置をピクチャ座標にしてモデルに通知</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>mouseReleased(MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">マウスが押し続けられていたのが離された位置をピクチャ座標にしてモデルに通知</td>
+                <td class="left-padding"></td>
+              </tr>
+              <tr>
+                <td class="left-padding"><code>showPopupMenu(MouseEvent in aMouseEvent)</a></code></td>
+                <td class="left-padding"><code>void</code></td>
+                <td class="left-padding"><code>public</code></td>
+                <td class="left-padding">ポップアップメニューが出される場所をピクチャ座標にしてモデルに通知</td>
+                <td class="left-padding"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+  <div class="right-small">Copyright 2023 Project Moonlight Vigil, Updated: 2023/07/31 (Created: 2023/05/2)</div>
+</body>
+
+</html>

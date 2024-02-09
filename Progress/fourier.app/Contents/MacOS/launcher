@@ -1,0 +1,4 @@
+#!/bin/bash
+
+java -jar ./Users/soooga/AP/Java/Fourier2/fourier.app/Contents/Resources/Java/fourier.jar
+

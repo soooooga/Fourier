@@ -1,0 +1,2 @@
+#!/bin/bash
+exec sudo java -jar ./fourier.app/Contents/Resources/Java/fourier.jar

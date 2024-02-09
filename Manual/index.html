@@ -1,0 +1,628 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="プロジェクト演習のホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+<style type="text/css">
+<!--
+body {
+  background-color : #ffffff;
+  margin : 20px;
+  padding : 10px;
+  font-family : serif;
+  font-size : 10pt;
+}
+a {
+  text-decoration : underline;
+  color : #000000;
+}
+a:link {
+  background-color : #ffddbb;
+}
+a:visited {
+  background-color : #ccffcc;
+}
+a:hover {
+  background-color : #dddddd;
+}
+a:active {
+  background-color : #dddddd;
+}
+div.belt {
+  background-color : #eeeeee;
+  padding : 0px 4px;
+}
+div.belt-yellow {
+  background-color : #ffffcc;
+  padding : 0px 4px;
+}
+div.belt-blue {
+  background-color : #ddeeff;
+  padding : 0px 4px;
+}
+div.right-small {
+  text-align : right;
+  font-size : 8pt;
+}
+img.border {
+  border-width : 1px;
+  border-color : #000000;
+  vertical-align : middle;
+}
+img.borderless {
+  border-width : 0px;
+  vertical-align : middle;
+}
+p.belt {
+  background-color : #ffeedd;
+  padding : 4px 8px;
+}
+p.belt-blue {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt-yellow {
+  background-color : #ffffcc;
+  padding : 4px 8px;
+}
+table {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+}
+table.profile {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+  margin-top : 8px;
+  margin-left : 8px;
+  margin-right : 8px;
+  margin-bottom : 8px;
+}
+table.belt {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  background-color : #ffeedd;
+  padding : 0px 0px;
+  width : 100%;
+}
+table.content {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+}
+table.font-fixed {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+  font-family : monospace;
+}
+table.nest {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 0px 0px;
+}
+td {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+td.center {
+  text-align : center;
+}
+td.center-half {
+  text-align : center;
+  width : 50%;
+  font-size : 8pt;
+}
+td.center-small {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.center-small-nopadding {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 0px;
+}
+td.center-white {
+  text-align : center;
+  background-color : #ffffff;
+}
+td.center-small-white {
+  text-align : center;
+  font-size : 8pt;
+  background-color : #ffffff;
+}
+td.center-border1 {
+  text-align : center;
+  vertical-align : middle;
+  empty-cells : show;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #ffc080;
+  width : 22px;
+  height : 22px;
+}
+td.left-small {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.left-small-white {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+td.right-small {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.right-small-white {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+th {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+#menu {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 32px;
+}
+#menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
+  clear: both;
+}
+#menu li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  float: left;
+}
+#menu a {
+  display: block;
+  padding: 2px 4px;
+  text-decoration: none;
+  margin: 0px;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #666666;
+}
+#menu a:hover {
+  display: block;
+  padding: 2px 4px;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  background: #FFCC66;
+}
+#menu .current {
+  background-color: #F45F57;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+}
+-->
+</style>
+<title>プロジェクト演習「フーリエ信号処理」マニュアル</title>
+</head>
+<body>
+<div id="menu">
+<ul>
+  <li><a href="../index.html">ホーム</a></li>
+  <li><a href="../Requirement/index.html">要求仕様書</a></li>
+  <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+  <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+  <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+  <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+  <li><a href="../TestResult/index.html">テスト結果</a></li>
+  <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+  <li><a href="../Program/index.html">プログラム</a></li>
+  <li><a href="../Manual/index.html" class="current">マニュアル</a></li>
+</ul>
+</div>
+<hr>
+<h2>プロジェクト演習「フーリエ信号処理」マニュアル</h2>
+<div class="belt">
+  <h3><a name="Install">インストール</a></h3>
+</div>
+
+<ol>
+  <li><a href="Fourier.zip">Fourier.zip</a>のアーカイブファイルを適当な場所に展開する。
+  <pre class="belt">$ unzip Fourier.zip
+    Archive:  Fourier.zip
+   creating: Fourier/
+  inflating: Fourier/FFT_Cooley_Tukey.pdf  
+  inflating: Fourier/utility.jar     
+  inflating: Fourier/.DS_Store       
+  inflating: __MACOSX/Fourier/._.DS_Store  
+  inflating: Fourier/build.xml       
+   creating: Fourier/Classes/
+  inflating: Fourier/Makefile        
+   creating: Fourier/fourier/
+  inflating: Fourier/pane.jar        
+   creating: Fourier/SampleImages/
+   creating: Fourier/ResultImages/
+  inflating: Fourier/mvc.jar         
+   creating: Fourier/fourier.app/
+  inflating: Fourier/ReadMe.txt      
+  inflating: Fourier/fourier.jar     
+  inflating: __MACOSX/Fourier/._fourier.jar  
+  inflating: Fourier/fourier.mf      
+   creating: Fourier/Classes/fourier/
+  inflating: Fourier/fourier/Example2d.java  
+  inflating: Fourier/fourier/DiscreteFourierTransformation.java  
+  inflating: Fourier/fourier/Example1d.java  
+  inflating: Fourier/fourier/FourierModel.java  
+  inflating: Fourier/fourier/Fourier1dModel.java  
+  inflating: Fourier/fourier/ContinuousFourierTransformation.java  
+  inflating: Fourier/fourier/Example.java  
+  inflating: Fourier/fourier/Fourier2dModel.java  
+  inflating: Fourier/fourier/FourierPaneModel.java  
+  inflating: Fourier/fourier/FourierPaneView.java  
+  inflating: Fourier/fourier/DiscreteFourier2dTransformation.java  
+  inflating: Fourier/fourier/FourierPaneController.java  
+  inflating: Fourier/fourier/DiscreteFourier1dTransformation.java  
+  inflating: Fourier/fourier/FourierTransformation.java  
+  inflating: Fourier/SampleImages/Fourier01.jpg  
+  inflating: Fourier/SampleImages/Fourier15.jpg  
+  inflating: Fourier/SampleImages/Fourier29.jpg  
+  inflating: Fourier/SampleImages/Fourier28.jpg  
+  inflating: Fourier/SampleImages/Fourier14.jpg  
+  inflating: Fourier/SampleImages/Fourier00.jpg  
+  inflating: Fourier/SampleImages/Fourier16.jpg  
+  inflating: Fourier/SampleImages/Fourier02.jpg  
+  inflating: Fourier/SampleImages/Fourier03.jpg  
+  inflating: Fourier/SampleImages/Fourier17.jpg  
+  inflating: Fourier/SampleImages/Fourier13.jpg  
+  inflating: Fourier/SampleImages/Fourier07.jpg  
+  inflating: Fourier/SampleImages/Fourier06.jpg  
+  inflating: Fourier/SampleImages/Fourier12.jpg  
+  inflating: Fourier/SampleImages/Fourier04.jpg  
+  inflating: Fourier/SampleImages/Fourier10.jpg  
+  inflating: Fourier/SampleImages/SoundWave.jpg  
+  inflating: Fourier/SampleImages/Fourier11.jpg  
+  inflating: Fourier/SampleImages/Fourier05.jpg  
+  inflating: Fourier/SampleImages/Fourier62.jpg  
+  inflating: Fourier/SampleImages/StockPrice.jpg  
+  inflating: Fourier/SampleImages/Fourier63.jpg  
+  inflating: Fourier/SampleImages/Fourier61.jpg  
+  inflating: Fourier/SampleImages/Fourier60.jpg  
+  inflating: Fourier/SampleImages/Fourier70.jpg  
+  inflating: Fourier/SampleImages/Fourier71.jpg  
+  inflating: Fourier/SampleImages/Fourier73.jpg  
+  inflating: Fourier/SampleImages/Fourier72.jpg  
+  inflating: Fourier/SampleImages/Fourier80.jpg  
+  inflating: Fourier/SampleImages/Fourier57.jpg  
+  inflating: Fourier/SampleImages/JosephFourier5.jpg  
+  inflating: Fourier/SampleImages/Electrocardiogram.jpg  
+  inflating: Fourier/SampleImages/JosephFourier4.jpg  
+  inflating: Fourier/SampleImages/Fourier56.jpg  
+  inflating: Fourier/SampleImages/Fourier81.jpg  
+  inflating: Fourier/SampleImages/Fourier83.jpg  
+  inflating: Fourier/SampleImages/Fourier54.jpg  
+  inflating: Fourier/SampleImages/JosephFourier6.jpg  
+  inflating: Fourier/SampleImages/JosephFourier7.jpg  
+  inflating: Fourier/SampleImages/Fourier55.jpg  
+  inflating: Fourier/SampleImages/Fourier82.jpg  
+  inflating: Fourier/SampleImages/Fourier92.jpg  
+  inflating: Fourier/SampleImages/Fourier51.jpg  
+  inflating: Fourier/SampleImages/JosephFourier3.jpg  
+  inflating: Fourier/SampleImages/JosephFourier2.jpg  
+  inflating: Fourier/SampleImages/Fourier50.jpg  
+  inflating: Fourier/SampleImages/Fourier93.jpg  
+  inflating: Fourier/SampleImages/Fourier91.jpg  
+  inflating: Fourier/SampleImages/Fourier52.jpg  
+  inflating: Fourier/SampleImages/JosephFourier1.jpg  
+  inflating: Fourier/SampleImages/Fourier53.jpg  
+  inflating: Fourier/SampleImages/Fourier90.jpg  
+  inflating: Fourier/SampleImages/FourierApp2.jpg  
+  inflating: Fourier/SampleImages/Fourier20.jpg  
+  inflating: Fourier/SampleImages/Fourier08.jpg  
+  inflating: Fourier/SampleImages/Fourier09.jpg  
+  inflating: Fourier/SampleImages/Fourier21.jpg  
+  inflating: Fourier/SampleImages/FourierApp3.jpg  
+  inflating: Fourier/SampleImages/FourierApp1.jpg  
+  inflating: Fourier/SampleImages/Fourier23.jpg  
+  inflating: Fourier/SampleImages/SourceDataAll.jpg  
+  inflating: Fourier/SampleImages/Fourier22.jpg  
+  inflating: Fourier/SampleImages/FourierApp4.jpg  
+  inflating: Fourier/SampleImages/Fourier32.jpg  
+  inflating: Fourier/SampleImages/Fourier26.jpg  
+  inflating: Fourier/SampleImages/Fourier27.jpg  
+  inflating: Fourier/SampleImages/Fourier33.jpg  
+  inflating: Fourier/SampleImages/Fourier19.jpg  
+  inflating: Fourier/SampleImages/Fourier25.jpg  
+  inflating: Fourier/SampleImages/Fourier31.jpg  
+  inflating: Fourier/SampleImages/SampleSignals.jpg  
+  inflating: Fourier/SampleImages/Fourier30.jpg  
+  inflating: Fourier/SampleImages/Fourier24.jpg  
+  inflating: Fourier/SampleImages/Fourier18.jpg  
+  inflating: Fourier/ResultImages/Fourier01.jpg  
+  inflating: Fourier/ResultImages/Fourier15.jpg  
+  inflating: Fourier/ResultImages/Fourier14.jpg  
+  inflating: Fourier/ResultImages/Fourier00.jpg  
+  inflating: Fourier/ResultImages/Fourier16.jpg  
+  inflating: Fourier/ResultImages/Fourier02.jpg  
+  inflating: Fourier/ResultImages/Fourier03.jpg  
+  inflating: Fourier/ResultImages/Fourier17.jpg  
+  inflating: Fourier/ResultImages/Fourier13.jpg  
+  inflating: Fourier/ResultImages/Fourier07.jpg  
+  inflating: Fourier/ResultImages/Fourier06.jpg  
+  inflating: Fourier/ResultImages/Fourier12.jpg  
+  inflating: Fourier/ResultImages/Fourier04.jpg  
+  inflating: Fourier/ResultImages/Fourier10.jpg  
+  inflating: Fourier/ResultImages/Fourier11.jpg  
+  inflating: Fourier/ResultImages/Fourier05.jpg  
+  inflating: Fourier/ResultImages/Fourier57.jpg  
+  inflating: Fourier/ResultImages/Fourier56.jpg  
+  inflating: Fourier/ResultImages/Fourier54.jpg  
+  inflating: Fourier/ResultImages/Fourier55.jpg  
+  inflating: Fourier/ResultImages/Fourier51.jpg  
+  inflating: Fourier/ResultImages/Fourier50.jpg  
+  inflating: Fourier/ResultImages/Fourier52.jpg  
+  inflating: Fourier/ResultImages/Fourier53.jpg  
+  inflating: Fourier/ResultImages/Fourier20.jpg  
+  inflating: Fourier/ResultImages/Fourier08.jpg  
+  inflating: Fourier/ResultImages/Fourier09.jpg  
+  inflating: Fourier/ResultImages/Fourier21.jpg  
+  inflating: Fourier/ResultImages/Fourier23.jpg  
+  inflating: Fourier/ResultImages/Fourier22.jpg  
+  inflating: Fourier/ResultImages/Fourier19.jpg  
+  inflating: Fourier/ResultImages/Fourier18.jpg  
+   creating: Fourier/fourier.app/Contents/
+  inflating: Fourier/Classes/fourier/Fourier2dModel.class  
+  inflating: Fourier/Classes/fourier/ContinuousFourierTransformation.class  
+  inflating: Fourier/Classes/fourier/FourierPaneController.class  
+  inflating: Fourier/Classes/fourier/DiscreteFourierTransformation.class  
+  inflating: Fourier/Classes/fourier/Example.class  
+  inflating: Fourier/Classes/fourier/Example2d.class  
+  inflating: Fourier/Classes/fourier/FourierPaneModel.class  
+  inflating: Fourier/Classes/fourier/FourierPaneView.class  
+  inflating: Fourier/Classes/fourier/Fourier1dModel.class  
+  inflating: Fourier/Classes/fourier/DiscreteFourier1dTransformation.class  
+  inflating: Fourier/Classes/fourier/DiscreteFourier2dTransformation.class  
+  inflating: Fourier/Classes/fourier/MethodAction.class  
+  inflating: Fourier/Classes/fourier/FourierTransformation.class  
+  inflating: Fourier/Classes/fourier/FourierModel.class  
+  inflating: Fourier/Classes/fourier/Example1d.class  
+  inflating: Fourier/Classes/fourier/Method2dAction.class  
+   creating: Fourier/fourier.app/Contents/MacOS/
+  inflating: __MACOSX/Fourier/fourier.app/Contents/._MacOS  
+   creating: Fourier/fourier.app/Contents/Resources/
+  inflating: Fourier/fourier.app/Contents/Info.plist  
+  inflating: __MACOSX/Fourier/fourier.app/Contents/._Info.plist  
+  inflating: Fourier/fourier.app/Contents/MacOS/launcher  
+  inflating: __MACOSX/Fourier/fourier.app/Contents/MacOS/._launcher  
+  inflating: Fourier/fourier.app/Contents/MacOS/fourier.jar  
+  inflating: __MACOSX/Fourier/fourier.app/Contents/MacOS/._fourier.jar  
+   creating: Fourier/fourier.app/Contents/Resources/Java/
+   creating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/
+  inflating: Fourier/fourier.app/Contents/Resources/Java/fourier.jar  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier01.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier15.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier29.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier28.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier14.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier00.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier16.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier02.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier03.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier17.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier13.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier07.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier06.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier12.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier04.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier10.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/SoundWave.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier11.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier05.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier62.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/StockPrice.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier63.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier61.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier60.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier70.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier71.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier73.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier72.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier80.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier57.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/JosephFourier5.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Electrocardiogram.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/JosephFourier4.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier56.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier81.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier83.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier54.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/JosephFourier6.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/JosephFourier7.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier55.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier82.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier92.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier51.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/JosephFourier3.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/JosephFourier2.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier50.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier93.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier91.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier52.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/JosephFourier1.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier53.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier90.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/FourierApp2.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier20.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier08.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier09.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier21.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/FourierApp3.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/FourierApp1.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier23.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/SourceDataAll.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier22.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/FourierApp4.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier32.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier26.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier27.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier33.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier19.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier25.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier31.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/SampleSignals.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier30.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier24.jpg  
+  inflating: Fourier/fourier.app/Contents/Resources/Java/SampleImages/Fourier18.jpg  
+</pre>
+ <li>展開して得られるFourierというディレクトリへ移る。
+  <pre class="belt">$ cd Fourier</pre>
+  <li>中身を確認する。
+  <pre class="belt">$ ls *
+   Mkakefile build.xml mvc.jar pane.jar utility.jar fourier.mf
+
+   fourier.app
+   Classses
+   fourier
+
+   SampleImages FFT_Cooley_Tukey ReadMe.txt ResultLmages</pre>
+  <li>makeする。
+  <pre class="belt">$ make
+    prepare:
+     [exec] 2023年 7月21日 金曜日 17時31分23秒 JST
+
+compile:
+     [exec] 2023年 7月21日 金曜日 17時31分23秒 JST
+
+jar:
+      [jar] Building jar: /Users/omoriyutaro/Desktop/Fourier/fourier.jar
+     [exec] 2023年 7月21日 金曜日 17時31分24秒 JST
+
+all:
+     [exec] 2023年 7月21日 金曜日 17時31分24秒 JST
+
+BUILD SUCCESSFUL
+Total time: 1 second</pre>
+<li>fourier.jarが生成されていることを確かめる。
+  <pre class="belt">
+    Mkakefile build.xml mvc.jar pane.jar fourier.jar utility.jar fourier.mf
+
+    fourier.app
+    Classses
+    fourier
+
+    SampleImages FFT_Cooley_Tukey ReadMe.txt ResultLmages</pre></pre>
+    <li>生成したfourier.jarをアプリケーション（Fourier.app）の中にインストールする。
+  <pre class="belt">$ make install
+    prepare:
+     [exec] 2023年 7月21日 金曜日 18時06分30秒 JST
+
+compile:
+     [exec] 2023年 7月21日 金曜日 18時06分30秒 JST
+
+jar:
+     [exec] 2023年 7月21日 金曜日 18時06分30秒 JST
+
+all:
+     [exec] 2023年 7月21日 金曜日 18時06分30秒 JST
+
+install:
+     [copy] Copying 1 file to /Users/omoriyutaro/Desktop/Fourier/fourier.app/Contents/Resources/Java
+     [exec] chmod: ./fourier.app/Contents/Resources/Java/../../MacOS/applet: No such file or directory
+     [exec] Result: 1
+     [copy] Copying 74 files to /Users/omoriyutaro/Desktop/Fourier/fourier.app/Contents/Resources/Java/SampleImages
+     [exec] 2023年 7月21日 金曜日 18時06分31秒 JST
+
+BUILD SUCCESSFUL
+Total time: 1 second</pre>
+</ol>
+<div class="belt">
+<h3><a name="Execution">実行方法</a>（実行ファイルの動かし方）</h3>
+</div>
+
+
+<p>実行するためのコマンドは以下の通りである。</p>
+<blockquote><code>java -jar fourier.jar</code></blockquote>
+<p>Mac OS Xの場合には、アプリケーションfourier.appをダブルクリックするほうが簡便である。</p>
+<blockquote>fourier.app<img class="borderless" src="images/fourier.png" width="128" height="140" alt="fourier.png"></blockquote>
+<p>また、openコマンドでfourier.appを開いても実行可能である。</p>
+<blockquote><code>open fourier.app</code></blockquote>
+<p>以下に実行例を示す。</p>
+<blockquote>
+<table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Snapshot1.png"><img class="borderless" src="thumbnails/Snapshot1.png" width="650" height="450" alt="Snapshot1"></a></td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+            <tr>
+              <td class="center-small"><a href="images/Snapshot2.png"><img class="borderless" src="thumbnails/Snapshot2.png" width="650" height="450" alt="Snapshot2"></a></td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="belt" summary="table">
+    <tbody>
+      <tr>
+        <td>
+        <table class="content" summary="table">
+          <tbody>
+              <tr>
+              <td class="center-small"><a href="images/Snapshot3.png"><img class="borderless" src="thumbnails/Snapshot3.png" width="650" height="450" alt="Snapshot3"></a></td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+
+<hr>
+<div class="right-small">Copyright 2023 Project Moonlight Vigil, Updated: 2023/07/24 (Created: 2023/07/20)</div>
+</body>
+</html>

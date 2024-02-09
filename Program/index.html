@@ -1,0 +1,580 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="プロジェクト演習のホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+<style type="text/css">
+<!--
+body {
+  background-color : #ffffff;
+  margin : 20px;
+  padding : 10px;
+  font-family : serif;
+  font-size : 10pt;
+}
+a {
+  text-decoration : underline;
+  color : #000000;
+}
+a:link {
+  background-color : #ffddbb;
+}
+a:visited {
+  background-color : #ccffcc;
+}
+a:hover {
+  background-color : #dddddd;
+}
+a:active {
+  background-color : #dddddd;
+}
+div.belt {
+  background-color : #eeeeee;
+  padding : 0px 4px;
+}
+div.belt-yellow {
+  background-color : #ffffcc;
+  padding : 0px 4px;
+}
+div.belt-blue {
+  background-color : #ddeeff;
+  padding : 0px 4px;
+}
+div.right-small {
+  text-align : right;
+  font-size : 8pt;
+}
+img.border {
+  border-width : 1px;
+  border-color : #000000;
+  vertical-align : middle;
+}
+img.borderless {
+  border-width : 0px;
+  vertical-align : middle;
+}
+p.belt {
+  background-color : #ffeedd;
+  padding : 4px 8px;
+}
+p.belt-blue {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt-yellow {
+  background-color : #ffffcc;
+  padding : 4px 8px;
+}
+table {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+}
+table.profile {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+  margin-top : 8px;
+  margin-left : 8px;
+  margin-right : 8px;
+  margin-bottom : 8px;
+}
+table.belt {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  background-color : #ffeedd;
+  padding : 0px 0px;
+  width : 100%;
+}
+table.content {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+}
+table.font-fixed {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+  font-family : monospace;
+}
+table.nest {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 0px 0px;
+}
+td {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+td.center {
+  text-align : center;
+}
+td.center-half {
+  text-align : center;
+  width : 50%;
+  font-size : 8pt;
+}
+td.center-small {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.center-small-nopadding {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 0px;
+}
+td.center-white {
+  text-align : center;
+  background-color : #ffffff;
+}
+td.center-small-white {
+  text-align : center;
+  font-size : 8pt;
+  background-color : #ffffff;
+}
+td.center-border1 {
+  text-align : center;
+  vertical-align : middle;
+  empty-cells : show;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #ffc080;
+  width : 22px;
+  height : 22px;
+}
+td.left-small {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.left-small-white {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+td.right-small {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.right-small-white {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+th {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+#menu {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 32px;
+}
+#menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
+  clear: both;
+}
+#menu li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  float: left;
+}
+#menu a {
+  display: block;
+  padding: 2px 4px;
+  text-decoration: none;
+  margin: 0px;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #666666;
+}
+#menu a:hover {
+  display: block;
+  padding: 2px 4px;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  background: #FFCC66;
+}
+#menu .current {
+  background-color: #F45F57;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+}
+-->
+</style>
+<title>プロジェクト演習「フーリエ信号処理」プログラム</title>
+</head>
+<body>
+<div id="menu">
+<ul>
+  <li><a href="../index.html">ホーム</a></li>
+  <li><a href="../Requirement/index.html">要求仕様書</a></li>
+  <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+  <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+  <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+  <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+  <li><a href="../TestResult/index.html">テスト結果</a></li>
+  <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+  <li><a href="../Program/index.html" class="current">プログラム</a></li>
+  <li><a href="../Manual/index.html">マニュアル</a></li>
+</ul>
+</div>
+<hr>
+<h2>プロジェクト演習「フーリエ信号処理」プログラム</h2>
+
+<ul>
+  <li><a href="#Example">Example</a>（メインクラス）</li>
+  <li><a href="#Example1d">Example1d</a>（一次元メインクラス）</li>
+  <li><a href="#Example2d">Example2d</a>（ニ次元メインクラス）</li>
+  <li><a href="#FourierTransformation">FourierTransformation</a>（フーリエ変換）</li>
+  <li><a href="#ContinuousFourierTransformation">ContinuousFourierTransformation</a>（連続フーリエ変換）</li>
+  <li><a href="#DiscreteFourierTransformation">DiscreteFourierTransformation</a>（離散フーリエ変換）</li>
+  <li><a href="#DiscreteFourier1dTransformation">DiscreteFourier1dTransformation</a>（一次元離散フーリエ変換）</li>
+  <li><a href="#DiscreteFourier2dTransformation">DiscreteFourier2dTransformation</a>（二次元離散フーリエ変換）</li>
+  <li><a href="#FourierModel">FourierModel</a>（フーリエモデル）</li>
+  <li><a href="#Fourier1dModel">Fourier1dModel</a>（一次元フーリエモデル）</li>
+  <li><a href="#Fourier2dModel">Fourier2dModel</a>（二次元フーリエモデル）</li>
+  <li><a href="#FourierPaneModel">FourierPaneModel</a>（フーリエペインモデル）</li>
+  <li><a href="#FourierPaneView">FourierPaneView</a>（フーリエペインビュー）</li>
+  <li><a href="#FourierPaneController">FourierPaneController</a>（フーリエペインコントローラー）</li>
+</ul>
+<ul>
+  <li><a href="#fourier.mf">fourier.mf</a>（マニフェストファイル）</li>
+  <li><a href="#Makefile">Makefile</a>（メイクファイル）</li>
+  <li><a href="#build.xml">build.xml</a>（ビルドファイル）</li>
+</ul>
+
+<div class="belt">
+  <h3><a name="Example" href="../TestSpecification/index.html#Example">Example（メインクラス）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="Example1d" href="../TestSpecification/index.html#Example1d">Example1d（一次元メインクラス）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="Example2d" href="../TestSpecification/index.html#Example2d">Example2d（二次元メインクラス）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="FourierTransformation" href="../TestSpecification/index.html#FourierTransformation">FourierTransformation（フーリエ変換）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="ContinuousFourierTransformation" href="../TestSpecification/index.html#ContinuousFourierTransformation">ContinuousFourierTransformation（連続フーリエ変換）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="DiscreteFourierTransformation" href="../TestSpecification/index.html#DiscreterFourieTransformation">DiscreteFourierTransformation（離散フーリエ変換）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="DiscreteFourier1dTransformation" href="../TestSpecification/index.html#DiscreteFourier1dTransformation">DiscreteFourier1dTransformation（一次元離散フーリエ変換）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="DiscreteFourier2dTransformation" href="../TestSpecification/index.html#DiscreteFourier2dTransformation">DiscreteFourier2dTransformation（二次元離散フーリエ変換）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="FourierModel" href="../TestSpecification/index.html#FourierModel">FourierModel（フーリエモデル）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="Fourier1dModel" href="../TestSpecification/index.html#Fourier1dModel">Fourier1dModel（一次元フーリエモデル）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="Fourier2dModel" href="../TestSpecification/index.html#Fourier2dModel">Fourier2dModel（二次元フーリエモデル）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="FourierPaneModel" href="../TestSpecification/index.html#FourierPaneModel">FourierPaneModel（フーリエペインモデル）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="FourierPaneView" href="../TestSpecification/index.html#FourierPaneView">FourierPaneView（フーリエペインビュー）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+  <h3><a name="FourierPaneController" href="../TestSpecification/index.html#FourierPaneController">FourierPaneController（フーリエペインコントローラー）</a></h3>
+</div>
+<pre></pre>
+
+<div class="belt">
+<h3><a name="fourier.mf" href="../TestSpecification/index.html#fourier.mf">fourier.mf（マニフェストファイル）</a></h3>
+</div>
+<pre>
+  Manifest-Version: 1.0
+  Main-Class: fourier.Example
+</pre>
+
+<div class="belt">
+<h3><a name="Makefile" href="../TestSpecification/index.html#Makefile">Makefile（メイクファイル）</a></h3>
+</div>
+<pre>
+  ANT	= env LC_ALL=ja_JP.UTF-8 ant
+ARCHIVE	= $(shell basename `pwd`)
+SOURCES	= $(shell find . -name "*.java")
+STYLE_YAML	= clang-format-for-java.yaml
+STYLE_CONF	= _clang-format
+
+all:
+	$(ANT) all
+
+clean:
+	$(ANT) clean
+
+test:
+	$(ANT) test
+
+install:
+	$(ANT) install
+
+doc:
+	$(ANT) doc
+
+wipe: clean
+	@find . -name ".DS_Store" -exec rm {} ";" -exec echo rm -f {} ";"
+	(cd ../ ; rm -f ./$(ARCHIVE).zip)
+
+#zip:
+#	$(ANT) zip
+
+zip: wipe
+	@find . -exec touch -t `date "+%Y%m%d%H%M"` {} \; ; xattr -cr .
+	(cd ../ ; zip -r ./$(ARCHIVE).zip ./$(ARCHIVE)/ --exclude='*/.svn/ *')
+
+format:
+	@rm -f $(STYLE_CONF) ; ln -s $(STYLE_YAML) $(STYLE_CONF)
+	for each in $(SOURCES) ; do echo ---[$${each}]--- ; clang-format -style=file $${each} ; echo ; done
+	@rm -f $(STYLE_CONF)
+
+app: install
+	@xattr -cr ./fourier.app
+	open ./fourier.app
+
+check: if while for ifTrue ifFalse ifThenElse whileTrue whileFalse forEach
+	@:
+
+if:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'if[\ \t]*\(' {} \; | sort
+
+ifTrue:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'ifTrue[\ \t]*\(' {} \; | sort
+
+ifFalse:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'ifFalse[\ \t]*\(' {} \; | sort
+
+ifThenElse:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'ifThenElse[\ \t]*\(' {} \; | sort
+
+while:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'while[\ \t]*\(' {} \; | sort
+
+whileTrue:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'whileTrue[\ \t]*\(' {} \; | sort
+
+whileFalse:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'whileFalse[\ \t]*\(' {} \; | sort
+
+for:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'for[\ \t]*\(' {} \; | sort
+
+forEach:
+	@echo "---<" $@ ">---" 
+	@find . -name '*.java' -exec grep -HnE 'forEach[\ \t]*\(' {} \; | sort
+
+</pre>
+
+<div class="belt">
+<h3><a name="build.xml" href="../TestSpecification/index.html#build.xml">build.xml（ビルドファイル）</a></h3>
+</div>
+<pre>
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;project name=&quot;fourier&quot; default=&quot;all&quot; basedir=&quot;.&quot;&gt;
+
+  &lt;property name=&quot;package&quot; value=&quot;fourier&quot; /&gt;
+	&lt;property name=&quot;pane&quot; value=&quot;pane&quot; /&gt;
+	&lt;property name=&quot;packagenames&quot; value=&quot;${package},${pane}&quot; /&gt;
+	&lt;property name=&quot;destdir&quot; value=&quot;./Classes&quot; /&gt;
+	&lt;property name=&quot;docdir&quot; value=&quot;./JavaDoc&quot; /&gt;
+	&lt;property name=&quot;instdir&quot; value=&quot;./${ant.project.name}.app/Contents/Resources/Java" /&gt;
+	&lt;property name=&quot;copyright&quot; value=&quot;Copyright 2008-2016 AOKI Atsushi. All Rights Reserved.&quot; /&gt;
+	&lt;property name=&quot;zipname&quot; value=&quot;${ant.project.name}&quot; /&gt;
+
+	&lt;target name=&quot;all&quot; depends=&quot;jar&quot; description=&quot;compile all&quot;&gt;
+    &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;prepare&quot; depends=&quot;&quot; description=&quot;prepare to compile&quot;&gt;
+    &lt;mkdir dir=&quot;${destdir}&quot; /&gt;
+		&lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;compile&quot; depends=&quot;prepare&quot; description=&quot;compile all sources&quot;&gt;
+    &lt;javac
+			fork=&quot;true&quot;
+			srcdir=&quot;${basedir}&quot;
+			destdir=&quot;${destdir}&quot;
+			includeAntRuntime=&quot;true&quot;
+			encoding=&quot;UTF-8&quot;
+			deprecation=&quot;on&quot;
+			verbose=&quot;false&quot;&gt;
+			&lt;compilerarg value=&quot;-J-Dfile.encoding=UTF8&quot; /&gt;
+			&lt;compilerarg value=&quot;-Xlint:all&quot; /&gt;
+			&lt;classpath&gt;
+        &lt;pathelement location=&quot;.&quot; /&gt;
+				&lt;pathelement location=&quot;${pane}.jar&quot; /&gt;
+      &lt;/classpath&gt;
+    &lt;/javac&gt;
+		&lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;jar&quot; depends=&quot;compile&quot; description=&quot;make jar file&quot;&gt;
+    &lt;jar
+			jarfile=&quot;${package}.jar&quot;
+			basedir=&quot;${destdir}&quot;
+			manifest=&quot;${package}.mf&quot;&gt;
+			&lt;zipfileset src=&quot;${pane}.jar&quot; /&gt;
+    &lt;/jar&gt;
+		&lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;clean&quot; description=&quot;cleaning&quot;&gt;
+    &lt;delete dir=&quot;${destdir}&quot; /&gt;
+		&lt;delete file=&quot;${package}.jar&quot; /&gt;
+		&lt;delete dir=&quot;${docdir}&quot; /&gt;
+		&lt;delete dir=&quot;${instdir}&quot; /&gt;
+		&lt;delete file=&quot;../${zipname}.zip&quot; /&gt;
+		&lt;delete&gt;
+      &lt;fileset dir=&quot;${package}&quot; includes=&quot;*.class&quot; /&gt;
+    &lt;/delete&gt;
+		&lt;delete dir=&quot;ResultImages&quot; /&gt;
+		&lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;test&quot; depends=&quot;all&quot; description=&quot;test&quot;&gt;
+    &lt;exec executable=&quot;java&quot; spawn=&quot;false&quot;&gt;
+      &lt;arg line=&quot;-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar&quot; /&gt;
+    &lt;/exec&gt;
+		&lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;install&quot; depends=&quot;all&quot; description=&quot;install into application&quot;&gt;
+    &lt;copy file=&quot;${package}.jar&quot; todir=&quot;${instdir}&quot; /&gt;
+		&lt;exec executable=&quot;chmod&quot;&gt;
+      &lt;arg line=&quot;755 ${instdir}/../../MacOS/applet&quot; /&gt;
+      &lt;/exec&gt;
+    &lt;copy todir=&quot;${instdir}/SampleImages&quot;&gt;
+      &lt;fileset dir=&quot;SampleImages&quot; includes=&quot;*.jpg&quot; /&gt;
+    &lt;/copy&gt;
+		&lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;doc&quot; depends=&quot;all&quot; description=&quot;make document (javadoc)&quot;&gt;
+    &lt;mkdir dir=&quot;${docdir}&quot; /&gt;
+		&lt;javadoc
+			locale=&quot;ja_JP&quot;
+			sourcepath=&quot;${basedir}&quot;
+			destdir=&quot;${docdir}&quot;
+			packagenames=&quot;${packagenames}&quot;
+			author=&quot;true&quot;
+			version=&quot;true&quot;
+			charset=&quot;UTF-8&quot;
+			encoding=&quot;UTF-8&quot;
+			docencoding=&quot;UTF-8&quot;
+			linksource=&quot;yes&quot;
+			additionalparam=&quot;-J-Dfile.encoding=UTF-8&quot;
+			access=&quot;private&quot;&gt;
+			&lt;doctitle&gt;${doc-title}&lt;/doctitle&gt;
+			&lt;bottom&gt;${copyright}&lt;/bottom&gt;
+			&lt;classpath&gt;
+        &lt;pathelement location=&quot;.&quot; /&gt;
+				&lt;pathelement location=&quot;${pane}.jar&quot; /&gt;
+      &lt;/classpath&gt;
+    &lt;/javadoc&gt;
+		&lt;exec executable=&quot;open&quot;&gt;
+      &lt;arg line=&quot;-a 'Safari' ${docdir}/index.html&quot; /&gt;
+      &lt;/exec&gt;
+    &lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;zip&quot; depends=&quot;clean&quot; description=&quot;make zip file&quot;&gt;
+    &lt;delete file=&quot;../${zipname}.zip&quot; /&gt;
+		&lt;zip destfile=&quot;../${zipname}.zip&quot;&gt;
+      &lt;zipfileset dir=&quot;.&quot; prefix=&quot;${zipname}&quot; /&gt;
+    &lt;/zip&gt;
+		&lt;exec executable=&quot;date&quot; spawn=&quot;false&quot; /&gt;
+  &lt;/target&gt;
+
+	&lt;target name=&quot;create-launch-script&quot;&gt;
+    &lt;echo file=&quot;${instdir}/../../MacOS/launcher&quot; message=&quot;#!/bin/bash&#10;exec java -jar ${instdir}/${package}.jar&quot; /&gt;
+    &lt;exec executable=&quot;chmod&quot; failonerror=&quot;true&quot;&gt;
+      &lt;arg line=&quot;755 ${instdir}/../../MacOS/launcher&quot; /&gt;
+    &lt;/exec&gt;
+    &lt;/target&gt;
+
+  &lt;target name=&quot;create-info-plist&quot;&gt;
+    &lt;echo file=&quot;${instdir}/../../Info.plist&quot; message=&quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;&#10;&lt;plist version=&quot;1.0&quot;&gt;&#10;&lt;dict&gt;&#10;&lt;key&gt;CFBundleExecutable&lt;/key&gt;&#10;&lt;string&gt;launcher&lt;/string&gt;&#10;&lt;key&gt;CFBundleIdentifier&lt;/key&gt;&#10;&lt;string&gt;com.yourcompany.yourapp&lt;/string&gt;&#10;&lt;/dict&gt;&#10;&lt;/plist&gt;&quot; /&gt;
+&lt;/target&gt;
+
+
+
+&lt;/project&gt;
+
+</pre>
+
+<hr>
+<div class="right-small">Copyright 20xx Project xx, Updated: 2017/03/13 (Created: 2009/11/11)</div>
+</body>
+</html>

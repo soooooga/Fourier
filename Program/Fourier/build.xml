@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="fourier" default="all" basedir=".">
+
+	<property name="package" value="fourier" />
+	<property name="utility" value="utility" />
+	<property name="pane" value="pane" />
+	<property name="mvc" value="mvc" />
+
+	<property name="packagenames" value="${package},${utility},${pane},${mvc}" />
+	<property name="destdir" value="./Classes" />
+	<property name="docdir" value="./JavaDoc" />
+	<property name="instdir" value="./${ant.project.name}.app/Contents/Resources/Java" />
+	<property name="copyright" value="Copyright 2008-2016 AOKI Atsushi. All Rights Reserved." />
+	<property name="zipname" value="${ant.project.name}" />
+	<property name="junitjar" value="./junit-platform-console-standalone-1.7.0.jar" />  <!-- これを追加 -->
+	<property name="reportdir" value="./test-report" />  <!-- これを追加 -->
+
+	<!-- 以下を追加、単体テストのために。バージョンが1.10.4未満ではjunitlauncherが未サポートゆえに。 -->
+	<fail message="Apache Ant 1.10.4+ is required.">
+		<condition>
+			<not>
+				<antversion atleast="1.10.4"/>
+			</not>
+		</condition>
+	</fail>
+
+	<target name="all" depends="jar" description="build all">
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<target name="prepare" depends="" description="prepare to compile">
+		<mkdir dir="${destdir}" />
+        <copy file="${junitjar}" todir="./" />   <!-- これを追加 -->
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<target name="compile" depends="prepare" description="compile all sources">
+		<javac
+			fork="true"
+			srcdir="${basedir}"
+			destdir="${destdir}"
+			includeAntRuntime="true"
+			encoding="UTF-8"
+			deprecation="on"
+			verbose="false">
+			<compilerarg value="-J-Dfile.encoding=UTF8" />
+			<compilerarg value="-Xlint:all" />
+			<classpath>
+				<pathelement location="." />
+				<pathelement location="${utility}.jar" />
+				<pathelement location="${pane}.jar" />
+				<pathelement location="${mvc}.jar" />
+			    <pathelement location="${junitjar}" />   <!-- これを追加 -->
+			</classpath>
+		</javac>
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<target name="jar" depends="compile" description="make jar file">
+		<jar
+			jarfile="${package}.jar"
+			basedir="${destdir}"
+			manifest="${package}.mf">
+			<zipfileset src="${utility}.jar" />
+			<zipfileset src="${pane}.jar" />
+			<zipfileset src="${mvc}.jar" />
+            <zipfileset src="${junitjar}" />   <!--これを追加 -->
+		</jar>
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<target name="clean" description="cleaning">
+		<delete dir="${destdir}" />
+		<delete file="${package}.jar" />
+		<delete dir="${docdir}" />
+		<delete dir="${instdir}" />
+		<delete file="../${zipname}.zip" />
+		<delete>
+			<fileset dir="${package}" includes="*.class" />
+		</delete>
+	 	<delete file="${junitjar}" />  <!--これを追加 -->
+		<delete dir="${reportdir}" />  <!-- これを追加 -->
+		<delete dir="ResultImages" />
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<!-- 以下を追加、単体テストのために。junit.launcher -->
+	<target name="unittest.junit.launcher" depends="all"  description="junit launcher">
+		<delete dir="${reportdir}" />
+		<junitlauncher haltOnFailure="true" printSummary="true">
+			<classpath>
+				<pathelement location="." />
+				<pathelement location="${junitjar}" />
+			</classpath>
+			<testclasses outputdir="${reportdir}">
+				<fileset dir="${destdir}">
+					<include name="*Test.class"/>
+				</fileset>
+				<listener type="legacy-xml" sendSysOut="true" sendSysErr="true"/>
+				<listener type="legacy-plain" sendSysOut="true" />
+			</testclasses>
+		</junitlauncher>
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<!-- 以下を追加、単体テストのために。console.launcher -->
+	<target name="unittest.console.launcher" depends="all"  description="console launcher">
+		<java classpath="${package}.jar" classname="org.junit.platform.console.ConsoleLauncher" fork="true" failonerror="false">
+			<arg value="--scan-class-path=${destdir}" />
+			<arg line="--reports-dir ${reportdir}" />
+			<jvmarg value="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k" />
+		</java>
+		<junitreport todir="${reportdir}">
+			<fileset dir="${reportdir}">
+				<include name="TEST-*.xml"/>
+			</fileset>
+			<report format="noframes" todir="${reportdir}/html"/>
+		</junitreport>
+		<exec executable="open" spawn="true">
+			<arg line="-a 'Safari' ${reportdir}/html/junit-noframes.html" />
+		</exec>
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<!-- 以下を追加、単体テストのために。 -->
+	<target name="unittest" depends="unittest.junit.launcher, unittest.console.launcher">
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<target name="test" depends="all" description="test">
+		<exec executable="java" spawn="false">
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar" />
+		</exec>
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<!-- 以下を追加、アサーションのために。「-ea」のオブションを追加していることに注意して。 -->
+	<target name="assert" depends="all" description="assert">
+		<exec executable="java" spawn="false">
+			<arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -ea -jar ${package}.jar" />
+		</exec>
+		<exec executable="date" spawn="false" />
+	</target>
+
+<target name="icon" description="Copy icon to application bundle">
+    <!-- アプリケーションのアイコン画像ファイルのパス -->
+    <property name="icon.file" value="./SampleImages/JosephFourier1.jpg" />
+
+    <!-- アプリケーションバンドルのContents/Resourcesディレクトリへアイコンをコピー -->
+    <copy file="${icon.file}" todir="${instdir}/../../Resources" />
+</target>
+
+	<target name="install" depends="all,icon" description="install into application">
+	<copy file="${package}.jar" todir="${instdir}" />
+	<echo file="${instdir}/../../MacOS/launcher" message="#!/bin/bash&#10;exec sudo java -jar ${instdir}/fourier.jar" />
+    <exec executable="chmod" failonerror="true">
+        <arg line="777 ${instdir}/../../MacOS/launcher" />
+    </exec>
+	<exec executable="chmod" failonerror="true">
+        <arg line="777 ${instdir}/fourier.jar" />
+    </exec>
+		<copy todir="${instdir}/SampleImages">
+			<fileset dir="SampleImages" includes="*.jpg" />
+		</copy>
+		    
+		<exec executable="date" spawn="false" />
+	</target>
+
+
+	<target name="doc" depends="all" description="make document (javadoc)">
+		<mkdir dir="${docdir}" />
+		<javadoc
+			locale="ja_JP"
+			sourcepath="${basedir}"
+			destdir="${docdir}"
+			packagenames="${packagenames}"
+			author="true"
+			version="true"
+			charset="UTF-8"
+			encoding="UTF-8"
+			docencoding="UTF-8"
+			linksource="yes"
+			additionalparam="-J-Dfile.encoding=UTF-8"
+			access="private">
+			<doctitle>${doc-title}</doctitle>
+			<bottom>${copyright}</bottom>
+			<classpath>
+				<pathelement location="." />
+				<pathelement location="${utility}.jar" />
+				<pathelement location="${pane}.jar" />
+				<pathelement location="${junitjar}" />  <!-- これを追加 -->
+			</classpath>
+		</javadoc>
+		<exec executable="open">
+			<arg line="-a 'Safari' ${docdir}/index.html" />
+		</exec>
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<target name="zip" depends="clean" description="make zip file">
+		<delete file="../${zipname}.zip" />
+		<zip destfile="../${zipname}.zip">
+			<zipfileset dir="." prefix="${zipname}" />
+		</zip>
+		<exec executable="date" spawn="false" />
+	</target>
+
+	<target name="create-launch-script">
+   
+	<exec executable="date" spawn="false" />
+  </target>
+
+	<target name="create-info-plist">
+    <echo file="${instdir}/../../Info.plist" message="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;&#10;&lt;plist version=&quot;1.0&quot;&gt;&#10;&lt;dict&gt;&#10;&lt;key&gt;CFBundleExecutable&lt;/key&gt;&#10;&lt;string&gt;launcher&lt;/string&gt;&#10;&lt;key&gt;CFBundleIdentifier&lt;/key&gt;&#10;&lt;string&gt;com.yourcompany.yourapp&lt;/string&gt;&#10;&lt;/dict&gt;&#10;&lt;/plist&gt;" />
+</target>
+
+
+
+</project>
